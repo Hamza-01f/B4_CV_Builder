@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your CV Template</title>
+    <link href="../assets/css/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="h-14 bg-gradient-to-r from-purple-500 to-pink-500" >
+
+    <div class="container mx-auto px-4 py-12" class="bg-[url('../assets/Images/background.jpg')] bg-cover bg-center h-64">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">Choose Your CV Template</h1>
+
+        <div class="flex justify-center space-x-8">
+            <!-- Template 1 -->
+            <div id="template-1" class="template-card w-1/3 bg-white rounded-lg shadow-lg p-6 cursor-pointer hover:shadow-2xl" onclick="selectTemplate('template-1')">
+                <h2 class="text-xl font-semibold text-center mb-4">Classic Template</h2>
+                <img src="https://www.cvhero.com/templates/preview/classic-cv.jpg" alt="Classic Template" class="w-full h-64 object-cover rounded-lg mb-4">
+                <p class="text-center text-gray-600">A clean and professional template for a traditional CV layout.</p>
+            </div>
+
+            <!-- Template 2 -->
+            <div id="template-2" class="template-card w-1/3 bg-white rounded-lg shadow-lg p-6 cursor-pointer hover:shadow-2xl" onclick="selectTemplate('template-2')">
+                <h2 class="text-xl font-semibold text-center mb-4">Modern Template</h2>
+                <img src="https://marketplace.canva.com/EAFzSzKZZsg/1/0/1131w/canva-modern-minimalist-cv-resume-oTDK4_esRiU.jpg" alt="Modern Template" class="w-full h-64 object-cover rounded-lg mb-4">
+                <p class="text-center text-gray-600">A modern design with a more creative and flexible layout.</p>
+            </div>
+        </div>
+
+        <div class="mt-8 flex justify-center">
+            <button id="nextBtn" class="bg-blue-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-blue-700 transition" onclick="nextPage()">Next</button>
+        </div>
+    </div>
+
+    <script src="../assets/js/index.js"></script>
+
+</body>
+</html>
