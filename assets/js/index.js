@@ -16,9 +16,9 @@
         // Function to proceed to the next page
         function nextPage() {
             if (selectedTemplate) {
-                // Redirect to the next page (for now, just log the selected template)
+                // Redirect to the next page.
                 alert('You have selected ' + selectedTemplate + '. Proceeding to the next step.');
-                // window.location.href = "next-page.html";
+                window.location.href = "fillInInformations.html";
             } else {
                 alert("Please select a template first.");
             }

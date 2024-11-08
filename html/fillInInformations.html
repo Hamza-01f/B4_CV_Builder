@@ -9,227 +9,312 @@
 </head>
 <body>
 
-<!-- Personal Information Form (Step 1) -->
-   <div id="step1" class="form-step">
-        <h2 class="text-2xl font-semibold mb-4">Informations personnelles</h2>
-        <form id="personal-info-form" class="space-y-4">
-        <div>
-            <label for="full-name" class="block text-sm font-medium text-gray-700">Nom Complet</label>
-            <input type="text" id="full-name" name="full-name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+    <div class="relative min-h-screen bg-gray-100 hidden">
+       <p>h</p>
+        <!-- Background Image -->
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('../assets/Images/background.jpg');">
         </div>
+    
+        <!-- Form Section -->
+        <div class="relative z-10 w-full md:w-1/2 p-8  bg-opacity-85 bg-slate-300 rounded-lg shadow-lg space-y-6 mx-auto mt-20 mb-20 ">
+          <h2 class="text-2xl font-semibold mb-4">Informations Personnelles</h2>
+          <form id="personal-info-form" class="space-y-4">
+            
+            <!-- Full Name -->
+            <div>
+              <label for="full-name" class="block text-sm font-medium text-gray-700">Nom Complet</label>
+              <input type="text" id="full-name" name="full-name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+            </div>
+      
+            <!-- Profile Photo -->
+            <div class="flex flex-col md:flex-row gap-4">
+              <div class="w-full md:w-1/2">
+                <label for="photo" class="block text-sm font-medium text-gray-700">Photo de profil</label>
+                <div class="mt-2 flex items-center justify-center gap-x-3 border-2 border-gray-500 border-dashed p-6 rounded-lg">
+                  <div class="text-center">
+                    <svg class="h-16 w-16 text-gray-480 mx-auto" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clip-rule="evenodd" />
+                    </svg>
+                    <div class="mt-4 flex text-sm/6 text-gray-600">
+                        <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
+                          <span>Upload Photo</span>
+                          <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                        </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+            <!-- Email -->
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+              <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+            </div>
         
-        <div>
-            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-            <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+            <!-- Phone -->
+            <div>
+              <label for="phone" class="block text-sm font-medium text-gray-700">Téléphone</label>
+              <input type="tel" id="phone" name="phone" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+            </div>
+        
+            <!-- Address -->
+            <div>
+              <label for="address" class="block text-sm font-medium text-gray-700">Adresse</label>
+              <input type="text" id="address" name="address" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+            </div>
+        
+            <!-- LinkedIn -->
+            <div>
+              <label for="linkedin" class="block text-sm font-medium text-gray-700">LinkedIn</label>
+              <input type="url" id="linkedin" name="linkedin" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+            </div>
+        
+            <!-- GitHub -->
+            <div>
+              <label for="github" class="block text-sm font-medium text-gray-700">GitHub</label>
+              <input type="url" id="github" name="github" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+            </div>
+        
+            <!-- Portfolio -->
+            <div>
+              <label for="portfolio" class="block text-sm font-medium text-gray-700">Portfolio</label>
+              <input type="url" id="portfolio" name="portfolio" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+            </div>
+      
+            <!-- Submit Button -->
+            <div class="mt-4 flex justify-between">
+              <button type="button" id="next-step1" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                Next
+              </button>
+            </div>
+          </form>
         </div>
+        <p>h</p>
+    </div>
     
-        <div>
-            <label for="phone" class="block text-sm font-medium text-gray-700">Téléphone</label>
-            <input type="tel" id="phone" name="phone" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
-        </div>
-    
-        <div>
-            <label for="address" class="block text-sm font-medium text-gray-700">Adresse</label>
-            <input type="text" id="address" name="address" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-        </div>
-    
-        <div>
-            <label for="linkedin" class="block text-sm font-medium text-gray-700">LinkedIn</label>
-            <input type="url" id="linkedin" name="linkedin" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-        </div>
-    
-        <div>
-            <label for="github" class="block text-sm font-medium text-gray-700">GitHub</label>
-            <input type="url" id="github" name="github" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-        </div>
-    
-        <div>
-            <label for="portfolio" class="block text-sm font-medium text-gray-700">Portfolio</label>
-            <input type="url" id="portfolio" name="portfolio" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-        </div>
-    
-        <div class="mt-4 flex justify-between">
-            <button type="button" id="next-step1" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-            Next
-            </button>
-        </div>
-        </form>
-   </div>
   
-
    <!-- Professional Information Form (Step 2) -->
-   <div id="step2" class="form-step hidden">
-        <h2 class="text-2xl font-semibold mb-4">Détails professionnels</h2>
-        <form id="professional-info-form" class="space-y-4">
-        <div>
-            <label for="job-title" class="block text-sm font-medium text-gray-700">Titre du poste</label>
-            <input type="text" id="job-title" name="job-title" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-        </div>
-        
-        <div>
-            <label for="profile-summary" class="block text-sm font-medium text-gray-700">Résumé de profil</label>
-            <textarea id="profile-summary" name="profile-summary" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" rows="4"></textarea>
-        </div>
-    
-        <div class="mt-4 flex justify-between">
-            <button type="button" id="next-step2" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-            Next
-            </button>
-        </div>
-        </form>
-   </div>
-  
 
+   <div id="step2" class="form-step hidden">
+
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('../assets/Images/background.jpg');">
+            </div>
+
+
+          <div class="relative z-10 w-full md:w-1/2 p-8  bg-opacity-85 bg-slate-300 rounded-lg shadow-lg space-y-6 mx-auto mt-20 mb-20 ">
+                <h2 class="text-2xl font-semibold mb-4">Détails professionnels</h2>
+                <form id="professional-info-form" class="space-y-4">
+                    <!--titre du poste-->
+                <div>
+                    <label for="job-title" class="block text-sm font-medium text-gray-700">Titre du poste</label>
+                    <input type="text" id="job-title" name="job-title" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                </div>
+                    <!--Resume of the profile-->
+                <div>
+                    <label for="profile-summary" class="block text-sm font-medium text-gray-700">Résumé de profil</label>
+                    <textarea id="profile-summary" name="profile-summary" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" rows="4"></textarea>
+                </div>
+                    <!--Next-->
+                <div class="mt-4 flex justify-between">
+                    <button type="button" id="next-step2" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Next
+                    </button>
+                </div>
+                </form>
+          </div>
+   </div>
 
    <!-- Skills Form (Step 3) -->
+
    <div id="step3" class="form-step hidden">
-       <h2 class="text-2xl font-semibold mb-4">Compétences techniques et soft skills</h2>
-        <form id="skills-form" class="space-y-4">
-        <div>
-            <label for="technical-skills" class="block text-sm font-medium text-gray-700">Compétences techniques (Hard Skills)</label>
-            <input type="text" id="technical-skills" name="technical-skills" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-        </div>
-    
-        <div>
-            <label for="soft-skills" class="block text-sm font-medium text-gray-700">Compétences interpersonnelles (Soft Skills)</label>
-            <input type="text" id="soft-skills" name="soft-skills" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-        </div>
-    
-        <div class="mt-4 flex justify-between">
-            <button type="button" id="next-step3" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-            Next
-            </button>
-        </div>
-        </form>
+
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('../assets/Images/background.jpg');">
+    </div>
+
+         <div class="relative z-10 w-full md:w-1/2 p-8  bg-opacity-85 bg-slate-300 rounded-lg shadow-lg space-y-6 mx-auto mt-20 mb-20 ">
+                <h2 class="text-2xl font-semibold mb-4">Compétences techniques et soft skills</h2>
+                <form id="skills-form" class="space-y-4">
+                <div>
+                    <label for="technical-skills" class="block text-sm font-medium text-gray-700">Compétences techniques (Hard Skills)</label>
+                    <input type="text" id="technical-skills" name="technical-skills" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                </div>
+            
+                <div>
+                    <label for="soft-skills" class="block text-sm font-medium text-gray-700">Compétences interpersonnelles (Soft Skills)</label>
+                    <input type="text" id="soft-skills" name="soft-skills" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                </div>
+            
+                <div class="mt-4 flex justify-between">
+                    <button type="button" id="next-step3" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Next
+                    </button>
+                </div>
+                </form>
+         </div>
    </div>
-  
   
    <!-- Languages Form (step 4)-->
-   <div id="step4" class="form-step hidden">
-        <h2 class="text-2xl font-semibold mb-4">Langues</h2>
-        <form id="languages-form" class="space-y-4">
-        <div id="languages-list">
-            <div class="language-entry space-y-2 mb-4">
-            <div class="flex space-x-4">
-                <input type="text" name="language" placeholder="Langue" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
-                <input type="text" name="level" placeholder="Niveau (ex: Intermédiaire)" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
-            </div>
-            </div>
-        </div>
-    
-        <button type="button" id="add-language" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none">
-            Ajouter une langue
-        </button>
-    
-        <div class="mt-4 flex justify-between">
-            <button type="button" id="next-step4" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-            Next
-            </button>
-        </div>
-        </form>
-   </div>
-  
- 
-   <!-- Hobbies & Interests Form (step 6) -->
-   <div id="step5" class="form-step hidden">
-        <h2 class="text-2xl font-semibold mb-4">Loisirs et intérêts</h2>
-        <form id="hobbies-form" class="space-y-4">
-        <div id="hobbies-list">
-            <div class="hobby-entry mb-4">
-            <input type="text" name="hobby" placeholder="Loisir ou intérêt" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
-            </div>
-        </div>
-    
-        <button type="button" id="add-hobby" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none">
-            Ajouter un loisir
-        </button>
-    
-        <div class="mt-4 flex justify-between">
-            <button type="button" id="next-step5" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-            Next
-            </button>
-        </div>
-        </form>
-    </div>
-  
-   </div>
 
-   <!-- Academic Education Form (step 7)-->
+   <div id="step4" class="form-step hidden">
+
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('../assets/Images/language.jpg');">
+    </div>
+
+       <div class="relative z-10 w-full md:w-1/2 p-8  bg-opacity-85 bg-slate-300 rounded-lg shadow-lg space-y-6 mx-auto mt-20 mb-20 ">
+            <h2 class="text-2xl font-semibold mb-4">Langues</h2>
+            <form id="languages-form" class="space-y-4">
+            <div id="languages-list">
+                <div class="language-entry space-y-2 mb-4">
+                <div class="flex space-x-4">
+                    <input type="text" name="language" placeholder="Langue" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                    <input type="text" name="level" placeholder="Niveau (ex: Intermédiaire)" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                </div>
+                </div>
+            </div>
+        
+            <button type="button" id="add-language" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none">
+                Ajouter une langue
+            </button>
+        
+            <div class="mt-4 flex justify-between">
+                <button type="button" id="next-step4" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                Next
+                </button>
+            </div>
+            </form>
+       </div>
+   </div>
+  
+   <!-- Hobbies & Interests Form (step 5) -->
+
+   <div id="step5" class="form-step hidden">
+
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('../assets/Images/hobbies.jpg');">
+    </div>
+
+         <div class="relative z-10 w-full md:w-1/2 p-8  bg-opacity-85 bg-slate-300 rounded-lg shadow-lg space-y-6 mx-auto mt-20 mb-20 ">
+                <h2 class="text-2xl font-semibold mb-4">Loisirs et intérêts</h2>
+                <form id="hobbies-form" class="space-y-4">
+                <div id="hobbies-list">
+                    <div class="hobby-entry mb-4">
+                    <input type="text" name="hobby" placeholder="Loisir ou intérêt" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                    </div>
+                </div>
+            
+                <button type="button" id="add-hobby" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none">
+                    Ajouter un loisir
+                </button>
+            
+                <div class="mt-4 flex justify-between">
+                    <button type="button" id="next-step5" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Next
+                    </button>
+                </div>
+                </form>
+         </div>
+    </div>
+
+   <!-- Academic Education Form (step 6)-->
 
    <div id="step6" class="form-step hidden">
-        <h2 class="text-2xl font-semibold mb-4">Cursus universitaire</h2>
-        <form id="education-form" class="space-y-4">
-        <div id="education-list">
-            <div class="education-entry space-y-2 mb-4">
-            <input type="text" name="degree" placeholder="Diplôme (ex: Licence en Informatique)" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
-            <input type="text" name="university" placeholder="Université" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
-            <input type="text" name="year" placeholder="Année de diplomation" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
-            </div>
-        </div>
-    
-        <button type="button" id="add-education" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none">
-            Ajouter un diplôme
-        </button>
-    
-        <div class="mt-4 flex justify-between">
-            <button type="button" id="next-step6" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-            Next
-            </button>
-        </div>
-        </form>
+
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('../assets/Images/background.jpg');">
     </div>
 
-    <!-- Work Experience Form (step 8)-->
+         <div class="relative z-10 w-full md:w-1/2 p-8  bg-opacity-85 bg-slate-300 rounded-lg shadow-lg space-y-6 mx-auto mt-20 mb-20 ">
+                <h2 class="text-2xl font-semibold mb-4">Cursus universitaire</h2>
+                <form id="education-form" class="space-y-4">
+                <div id="education-list">
+                    <div class="education-entry space-y-2 mb-4">
+                    <input type="text" name="degree" placeholder="Diplôme (ex: Licence en Informatique)" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                    <input type="text" name="university" placeholder="Université" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                    <input type="text" name="year" placeholder="Année de diplomation" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                    </div>
+                </div>
+            
+                <button type="button" id="add-education" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none">
+                    Ajouter un diplôme
+                </button>
+            
+                <div class="mt-4 flex justify-between">
+                    <button type="button" id="next-step6" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Next
+                    </button>
+                </div>
+                </form>
+         </div>
+    </div>
+
+    <!-- Work Experience Form (step 7)-->
 
     <div id="step7" class="form-step hidden">
-        <h2 class="text-2xl font-semibold mb-4">Expériences professionnelles</h2>
-        <form id="work-experience-form" class="space-y-4">
-            <div id="work-experience-list">
-            <div class="work-entry space-y-2 mb-4">
-                <input type="text" name="job-title" placeholder="Titre du poste" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
-                <input type="text" name="company" placeholder="Entreprise" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
-                <input type="text" name="duration" placeholder="Durée (ex: 2 ans)" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
-            </div>
-            </div>
 
-            <button type="button" id="add-work" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none">
-            Ajouter une expérience
-            </button>
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('../assets/Images/Layer.jpg');">
+        </div>
 
-            <div class="mt-4 flex justify-between">
-            <button type="button" id="next-step7" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                Next
-            </button>
-            </div>
-        </form>
+         <div class="relative z-10 w-full md:w-1/2 p-8  bg-opacity-85 bg-slate-300 rounded-lg shadow-lg space-y-6 mx-auto mt-20 mb-20 ">
+                <h2 class="text-2xl font-semibold mb-4">Expériences professionnelles</h2>
+                <form id="work-experience-form" class="space-y-4">
+                    <div id="work-experience-list">
+                    <div class="work-entry space-y-2 mb-4">
+                        <input type="text" name="job-title" placeholder="Titre du poste" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                        <input type="text" name="company" placeholder="Entreprise" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                        <input type="text" name="duration" placeholder="Durée (ex: 2 ans)" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                    </div>
+                    </div>
+        
+                    <button type="button" id="add-work" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none">
+                    Ajouter une expérience
+                    </button>
+        
+                    <div class="mt-4 flex justify-between">
+                    <button type="button" id="next-step7" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        Next
+                    </button>
+                    </div>
+                </form>
+         </div>
     </div>
 
-    <!-- Certifications Form (step 9)-->
+    <!-- Certifications Form (step 8)-->
 
-    <div id="step8" class="form-step hidden">
-        <h2 class="text-2xl font-semibold mb-4">Certifications</h2>
-        <form id="certifications-form" class="space-y-4">
-        <div id="certifications-list">
-            <div class="certification-entry space-y-2 mb-4">
-            <input type="text" name="certification-name" placeholder="Nom de la certification" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
-            <input type="url" name="certification-link" placeholder="Lien de la certification" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
-            </div>
+    <div id="step8" class="form-step ">
+
+        <!-- Progress bar container -->
+        <div class="progress-container relative w-full bg-gray-200 h-2 rounded-lg">
+            <div id="progress-bar" class="progress-bar bg-blue-500 h-full rounded-lg">ghghj</div>
         </div>
-    
-        <button type="button" id="add-certification" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none">
-            Ajouter une certification
-        </button>
-    
-        <div class="mt-4 flex justify-between">
-            <button type="button" id="next-step8" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-            Next
-            </button>
-        </div>
-        </form>
-    </div>
   
 
-   <!-- javascript source code goes here --> 
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('../assets/Images/graduate.jpg');">
+        </div>
+
+        <div class="relative z-10 w-full md:w-1/2 p-8  bg-opacity-86 bg-slate-300 rounded-lg shadow-lg space-y-6 mx-auto mt-20 mb-20 ">
+                <h2 class="text-2xl font-semibold mb-4">Certifications</h2>
+                <form id="certifications-form" class="space-y-4">
+                <div id="certifications-list">
+                    <div class="certification-entry space-y-2 mb-4">
+                    <input type="text" name="certification-name" placeholder="Nom de la certification" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                    <input type="url" name="certification-link" placeholder="Lien de la certification" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                    </div>
+                </div>
+            
+                <button type="button" id="add-certification" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none">
+                    Ajouter une certification
+                </button>
+            
+                <div class="mt-4 flex justify-between">
+                    <button type="button" id="next-step8" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Next
+                    </button>
+                </div>
+                </form>
+        </div>
+    </div>
+  
+   <!-- javascript source code goes here -->
+
     <script src="../assets/js/index.js"></script>
 </body>
 </html>
