@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -41,6 +41,7 @@
             <div>
               <label for="full-name" class="block text-sm font-medium text-gray-700">Nom Complet</label>
               <input type="text" id="full-name" name="full-name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+              <p id="full-name-error"></p>
             </div>
       
             <!-- Profile Photo -->
@@ -62,41 +63,48 @@
                 </div>
               </div>
             </div>
+            <p id="file-error"></p>
       
             <!-- Email -->
             <div>
               <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
               <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+              <p id="email-error"></p>
             </div>
         
             <!-- Phone -->
             <div>
               <label for="phone" class="block text-sm font-medium text-gray-700">Téléphone</label>
               <input type="tel" id="phone" name="phone" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+              <p id="phone-error"></p>
             </div>
         
             <!-- Address -->
             <div>
               <label for="address" class="block text-sm font-medium text-gray-700">Adresse</label>
               <input type="text" id="address" name="address" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              <p id="address-error"></p>
             </div>
         
             <!-- LinkedIn -->
             <div>
               <label for="linkedin" class="block text-sm font-medium text-gray-700">LinkedIn</label>
-              <input type="url" id="linkedin" name="linkedin" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              <input type="url" id="linkedin" name="linkedin" class=" mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              <p id="linkedin-error"></p>
             </div>
         
             <!-- GitHub -->
             <div>
               <label for="github" class="block text-sm font-medium text-gray-700">GitHub</label>
-              <input type="url" id="github" name="github" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              <input type="url" id="github" name="github" class=" mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              <p id="github-error"></p>
             </div>
         
             <!-- Portfolio -->
             <div>
               <label for="portfolio" class="block text-sm font-medium text-gray-700">Portfolio</label>
-              <input type="url" id="portfolio" name="portfolio" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              <input type="url" id="portfolio" name="portfolio" class=" mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+              <p id="portfolio-error"></p>
             </div>
       
             <!-- Submit Button -->
@@ -127,11 +135,13 @@
                     <label for="job-title" class="block text-sm font-medium text-gray-700">Titre du poste</label>
                     <input type="text" id="job-title" name="job-title" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                 </div>
+                <p id="job-title-error"></p>
                     <!--Resume of the profile-->
                 <div>
                     <label for="profile-summary" class="block text-sm font-medium text-gray-700">Résumé de profil</label>
                     <textarea id="profile-summary" name="profile-summary" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" rows="4"></textarea>
                 </div>
+                <p id="profile-summary-error"></p>
                     <!--Next-->
                 <div class="mt-4 flex justify-between">
                     <button type="button" id="next-step2" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
@@ -155,15 +165,13 @@
                 <div>
                     <label for="technical-skills" class="block text-sm font-medium text-gray-700">Compétences techniques (Hard Skills)</label>
                     <input type="text" id="technical-skills" name="technical-skills" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    <p id="hard-skill-error"></p>
                 </div>
             
                 <div>
                     <label for="soft-skills" class="block text-sm font-medium text-gray-700">Compétences interpersonnelles (Soft Skills)</label>
                     <input type="text" id="soft-skills" name="soft-skills" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
-                </div>
-
-                <div>
-
+                    <p id="soft-skill-error"></p>
                 </div>
 
                 <button type="button" id="add-certification" class="px-4 py-2 bg-sky-200 text-sky-600 rounded-md hover:bg-green-200 focus:outline-none">
@@ -193,14 +201,11 @@
             <div id="languages-list">
                 <div class="language-entry space-y-2 mb-4">
                 <div class="flex space-x-4">
-                    <input type="text" name="language" placeholder="Langue" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
-                    <input type="text" name="level" placeholder="Niveau (ex: Intermédiaire)" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                    <input id="language" type="text" name="language" placeholder="Langue" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                    <input id="language-level" type="text" name="level" placeholder="Niveau (ex: Intermédiaire)" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
                 </div>
+                <p id="language-entry-error"></p>
                 </div>
-            </div>
-
-            <div>
-
             </div>
         
             <button type="button" id="add-certification" class="px-4 py-2 bg-sky-200 text-sky-600 rounded-md hover:bg-green-200 focus:outline-none">
@@ -229,12 +234,9 @@
                 <form id="hobbies-form" class="space-y-4">
                 <div id="hobbies-list">
                     <div class="hobby-entry mb-4">
-                    <input type="text" name="hobby" placeholder="Loisir ou intérêt" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                    <input id="hobbies" type="text" name="hobby" placeholder="Loisir ou intérêt" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                    <p id="hobbies-error"></p>
                     </div>
-                </div>
-
-                <div>
-
                 </div>
             
                 <button type="button" id="add-certification" class="px-4 py-2 bg-sky-200 text-sky-600 rounded-md hover:bg-green-200 focus:outline-none">
@@ -263,14 +265,11 @@
                 <form id="education-form" class="space-y-4">
                 <div id="education-list">
                     <div class="education-entry space-y-2 mb-4">
-                    <input type="text" name="degree" placeholder="Diplôme (ex: Licence en Informatique)" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
-                    <input type="text" name="university" placeholder="Université" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
-                    <input type="text" name="year" placeholder="Année de diplomation" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                    <input id="degree" type="text" name="degree" placeholder="Diplôme (ex: Licence en Informatique)" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                    <input id="university" type="text" name="university" placeholder="Université" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                    <input id="year" type="text" name="year" placeholder="Année de diplomation" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
                     </div>
-                </div>
-
-                <div>
-
+                    <p id="diplom-form-error"></p>
                 </div>
             
                 <button type="button" id="add-certification" class="px-4 py-2 bg-sky-200 text-sky-600 rounded-md hover:bg-green-200 focus:outline-none">
@@ -299,16 +298,12 @@
                 <form id="work-experience-form" class="space-y-4">
                     <div id="work-experience-list">
                     <div class="work-entry space-y-2 mb-4">
-                        <input type="text" name="job-title" placeholder="Titre du poste" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
-                        <input type="text" name="company" placeholder="Entreprise" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
-                        <input type="text" name="duration" placeholder="Durée (ex: 2 ans)" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                        <input id="job-title" type="text" name="job-title" placeholder="Titre du poste" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                        <input id="company" type="text" name="company" placeholder="Entreprise" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                        <input id="duration" type="text" name="duration" placeholder="Durée (ex: 2 ans)" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
                     </div>
-                    </div>
-
-                    <div>
-
-                    </div>
-        
+                    <p id="Experience-error"></p>
+                    </div>      
                    <button type="button" id="add-certification" class="px-4 py-2 bg-sky-200 text-sky-600 rounded-md hover:bg-green-200 focus:outline-none">
                     + Ajouter une Experience
                    </button>
@@ -336,10 +331,12 @@
       <form id="certifications-form" class="space-y-4">
           <div id="certifications-list">
               <div class="certification-entry space-y-2 mb-4">
-                  <input type="text" name="certification-name" placeholder="Nom de la certification"
+                  <input id="certification-name" type="text" name="certification-name" placeholder="Nom de la certification"
                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
-                  <input type="url" name="certification-link" placeholder="Lien de la certification"
+                      <p id="Nom-de-la-certification"></p>
+                  <input id="certification-link" type="url" name="certification-link" placeholder="Lien de la certification"
                       class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required />
+                      <p id="lien-de-la-certification"></p>
               </div>
           </div>
           <div id="certification-container"></div>
@@ -349,7 +346,7 @@
 
           <div class="mt-4 flex justify-between">
               <button type="button" id="next-step8" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                  Create CV
+                  Generate CV
               </button>
           </div>
       </form>

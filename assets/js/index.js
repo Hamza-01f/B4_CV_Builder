@@ -2,7 +2,61 @@
    const downloadStep = document.querySelector('.download-step');
    let NextStep8 = document.getElementById('next-step8');
    let stepper = document.querySelector('.stepper');
-  
+   //----------------------- [variables for personal information form validation] ------------------------
+   let fullName = document.getElementById('full-name');
+   let fullNameError = document.getElementById('full-name-error');
+   let email = document.getElementById('email');
+   let emailError = document.getElementById('email-error');
+   let phone = document.getElementById('phone');
+   let phoneError = document.getElementById('phone-error');
+   let address = document.getElementById('address');
+   let addressError = document.getElementById('address-error');
+   let github = document.getElementById('github');
+   let linkedin = document.getElementById('linkedin');
+   let portfolio = document.getElementById('portfolio');
+   let githubError = document.getElementById('github-error');
+   let linkedinError = document.getElementById('linkedin-error');
+   let portfolioError = document.getElementById('portfolio-error');
+   let imageUpload = document.getElementById('file-upload');
+   let imageUploadError = document.getElementById('file-error');
+   //-------------------------- [variables for professional detailes form validation]----------------------
+   let jobTitle = document.getElementById('job-title');
+   let jobTitleError = document.getElementById('job-title-error');
+   let profileSummary = document.getElementById('profile-summary');
+   let profileSummaryError = document.getElementById('profile-summary-error');
+   //-------------------------- [variables for hard & soft skills form validation]--------------------------
+   let technicalSkills = document.getElementById('technical-skills');
+   let technicalSkillsError = document.getElementById('hard-skill-error');
+   let softSkills = document.getElementById('soft-skills');
+   let softSkillsError = document.getElementById('soft-skill-error')
+   //-------------------------- [variables for language form validation] -----------------------------------
+   let language = document.getElementById('language');
+   let languageLevel = document.getElementById('language-level');
+   let languageError = document.getElementById('language-entry-error');
+   //-------------------------- [variables for hobbies form validation] -----------------------------------
+   let hobbies = document.getElementById('hobbies');
+   let hobbiesError = document.getElementById('hobbies-error');
+   //-------------------------- [variables for university background form validation]----------------------
+   let degree = document.getElementById('degree');
+   let university = document.getElementById('university');
+   let year = document.getElementById('year');
+   let diplomFormError = document.getElementById('diplom-form-error');
+   //---------------------------- [variables that are related to professional experience validation] ------
+   let job = document.getElementById('job-title');
+   let company = document.getElementById('company');
+   let duration = document.getElementById('duration');
+   let ExperienceError = document.getElementById('Experience-error');
+   //--------------------------- [variables that are related to certifications validation] ---------------
+   let certificationName = document.getElementById('certification-name');
+   let certificationLink = document.getElementById('certification-link');
+   let NomDuLaCertificationError = document.getElementById('Nom-de-la-certification');
+   let lienduLaCertificationError = document.getElementById('lien-de-la-certification');
+   //------------------------- [regular expression for personal information validation]--------------------
+
+   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+   const phoneRegix = /^0\d{9}$/;
+   const addressRegix = /^[A-Za-z0-9\s,.'-]{3,}$/;
+   const linksRegix = /^(https?:\/\/)?(www\.)?[a-z0-9-]+\.[a-z]{2,}(\/[a-z0-9-]+)*$/;
         
 
 // let CertificationButton = document.getElementById('add-certification');
@@ -27,7 +81,7 @@
 
 
 
-//-----------------------------------the part that is related to first page which allows the user to choose which template he prefers ;    
+//-----------------------------------[the part that is related to first page which allows the user to choose which template he prefers]------------------------    
         let selectedTemplateId = null; // Declare this at the top to persist across functions
 
         // Function to highlight selected template
@@ -48,13 +102,14 @@
                 // Redirect to the next page.
                 alert('You have selected ' + selectedTemplateId + '. Proceeding to the next step.');
                 window.location.href = "fillInInformations.html";
+                alert(selectedTemplateId)
             } else {
                 alert("Please select a template first.");
             }
         }
 
  
-//---------------------- the part that is related to all functionalities of the pages from the first one till last one ------------------
+//----------------------[the part that is related to all functionalities of the pages from the first one till last one] ------------------
 
         
         // Initialize variables to keep track of the current step and the steps
@@ -79,22 +134,269 @@
         // Show the first step initially
         showStep(currentStep);
 
-        // Add event listeners for the "Next" buttons
         document.querySelectorAll('button[id^="next-step"]').forEach(button => {
             button.addEventListener('click', function(e) {
+
+                // Initialize valid variable
+                let valid = true;
+        
                 // If it's the last step, generate the CV
                 if (currentStep === totalSteps) {
-                    alert(selectedTemplateId)
-                    generateCV();
+                    generateCV();  
                 } else {
-                    // Increment step and show the next step
-                    currentStep++;
-                    showStep(currentStep);
-                    updateProgressBar();
+                
+                //-------------------------------------[ personal information form validation]-----------------------------------------
+                    // Full Name
+                    if (fullName.value === '' || fullName.value.length <= 4) {
+                        fullNameError.textContent = fullName.value === '' 
+                            ? "Please fill in your Full Name!" 
+                            : "Please Enter a name that contains more than 4 letters!";
+                        fullNameError.style.color = "red";
+                        valid = false;
+                    } else {
+                        fullNameError.textContent = '';
+                    }
+        
+                    // Image Upload
+                    if (imageUpload.files.length === 0) {
+                        imageUploadError.textContent = "Please Upload Your Profile Image";
+                        imageUploadError.style.color = "red";
+                        valid = false;
+                    } else {
+                        imageUploadError.textContent = '';
+                    }
+        
+                    // Email
+                    if (email.value === '' || !emailRegex.test(email.value)) {
+                        emailError.textContent = email.value === '' 
+                            ? "Please Enter your Email!" 
+                            : "Invalid Email, it should contain @ and finish with a domain like '.com'!";
+                        emailError.style.color = "red";
+                        valid = false;
+                    } else {
+                        emailError.textContent = '';
+                    }
+        
+                    // Phone
+                    if (phone.value === '' || !phoneRegix.test(phone.value)) {
+                        phoneError.textContent = phone.value === '' 
+                            ? 'Please enter Your number!' 
+                            : 'Invalid Phone number!';
+                        phoneError.style.color = "red";
+                        valid = false;
+                    } else {
+                        phoneError.textContent = '';
+                    }
+        
+                    // Address
+                    if (address.value === '' || !addressRegix.test(address.value)) {
+                        addressError.textContent = address.value === '' 
+                            ? 'Please enter Your address!' 
+                            : 'Please enter a Valid address!';
+                        addressError.style.color = "red";
+                        valid = false;
+                    } else {
+                        addressError.textContent = '';
+                    }
+        
+                    // LinkedIn
+                    if (linkedin.value === '' || !linksRegix.test(linkedin.value)) {
+                        linkedinError.textContent = linkedin.value === '' 
+                            ? 'Please Enter Your LinkedIn' 
+                            : 'Please Enter a valid LinkedIn link';
+                        linkedinError.style.color = "red";
+                        valid = false;
+                    } else {
+                        linkedinError.textContent = '';
+                    }
+        
+                    // GitHub
+                    if (github.value === '' || !linksRegix.test(github.value)) {
+                        githubError.textContent = github.value === '' 
+                            ? 'Please Enter a valid GitHub' 
+                            : 'Please Enter Your GitHub';
+                        githubError.style.color = "red";
+                        valid = false;
+                    } else {
+                        githubError.textContent = '';
+                    }
+        
+                    // Portfolio
+                    if (portfolio.value === '' || !linksRegix.test(portfolio.value)) {
+                        portfolioError.textContent = portfolio.value === '' 
+                            ? 'Please Enter Your Portfolio' 
+                            : 'Please Enter a valid Portfolio link';
+                        portfolioError.style.color = "red";
+                        valid = false;
+                    } else {
+                        portfolioError.textContent = '';
+                    }
+        
+                    //-----------------------------------[Validate Professional Details Form]-----------------------------
+        
+                    // Job Title
+                    if (jobTitle.value === '') {
+                        jobTitleError.textContent = 'Please enter your Job Title';
+                        jobTitleError.style.color = "red";
+                        valid = false;
+                    } else {
+                        jobTitleError.textContent = '';
+                    }
+        
+                    // Profile Summary
+                    if (profileSummary.value === '') {
+                        profileSummaryError.textContent = 'Please enter a Profile Summary';
+                        profileSummaryError.style.color = "red";
+                        valid = false;
+                    } else {
+                        profileSummaryError.textContent = '';
+                    }
+        
+                    //-----------------------------------[Validate Skills Form]-----------------------------------------
+        
+                    // Technical Skills
+                    if (technicalSkills.value === '') {
+                        technicalSkillsError.textContent = 'Please enter your Technical Skills';
+                        technicalSkillsError.style.color = "red";
+                        valid = false;
+                    } else {
+                        technicalSkillsError.textContent = '';
+                    }
+        
+                    // Soft Skills
+                    if (softSkills.value === '') {
+                        softSkillsError.textContent = 'Please enter your Soft Skills';
+                        softSkillsError.style.color = "red";
+                        valid = false;
+                    } else {
+                        softSkillsError.textContent = '';
+                    }
+        
+                    //-----------------------------------[Validate Language Form]----------------------------------------
+        
+                    // Language
+                    if (language.value === '') {
+                        languageError.textContent = 'Please enter a Language';
+                        languageError.style.color = "red";
+                        valid = false;
+                    } else {
+                        languageError.textContent = '';
+                    }
+        
+                    // Language Level
+                    if (languageLevel.value === '') {
+                        languageLevelError.textContent = 'Please enter Language Level';
+                        languageLevelError.style.color = "red";
+                        valid = false;
+                    } else {
+                        languageLevelError.textContent = '';
+                    }
+        
+                    //------------------------------------[Validate Hobbies Form]----------------------------------------
+        
+                    // Hobbies
+                    if (hobbies.value === '') {
+                        hobbiesError.textContent = 'Please enter your Hobbies';
+                        hobbiesError.style.color = "red";
+                        valid = false;
+                    } else {
+                        hobbiesError.textContent = '';
+                    }
+        
+                    //-------------------------------------[Validate University Background Form]---------------------------
+        
+                    // Degree
+                    if (degree.value === '') {
+                        diplomFormError.textContent = 'Please enter your Degree';
+                        diplomFormError.style.color = "red";
+                        valid = false;
+                    } else {
+                        diplomFormError.textContent = '';
+                    }
+        
+                    // University
+                    if (university.value === '') {
+                        diplomFormError.textContent = 'Please enter your University';
+                        diplomFormError.style.color = "red";
+                        valid = false;
+                    } else {
+                        diplomFormError.textContent = '';
+                    }
+        
+                    // Year
+                    if (year.value === '') {
+                        diplomFormError.textContent = 'Please enter your Graduation Year';
+                        diplomFormError.style.color = "red";
+                        valid = false;
+                    } else {
+                        diplomFormError.textContent = '';
+                    }
+        
+                    //----------------------------------[Validate Professional Experience Form]-----------------------------
+        
+                    // Job Title (Experience)
+                    if (job.value === '') {
+                        ExperienceError.textContent = 'Please enter Job Title';
+                        ExperienceError.style.color = "red";
+                        valid = false;
+                    } else {
+                        ExperienceError.textContent = '';
+                    }
+        
+                    // Company
+                    if (company.value === '') {
+                        ExperienceError.textContent = 'Please enter Company Name';
+                        ExperienceError.style.color = "red";
+                        valid = false;
+                    } else {
+                        ExperienceError.textContent = '';
+                    }
+        
+                    // Duration
+                    if (duration.value === '') {
+                        ExperienceError.textContent = 'Please enter Duration';
+                        ExperienceError.style.color = "red";
+                        valid = false;
+                    } else {
+                        ExperienceError.textContent = '';
+                    }
+        
+                    //------------------------------------------------[Validate Certifications Form]------------------------------
+        
+                    // Certification Name
+                    if (certificationName.value === '') {
+                        NomDuLaCertificationError.textContent = 'Please enter Certification Name';
+                        NomDuLaCertificationError.style.color = "red";
+                        valid = false;
+                    } else {
+                        NomDuLaCertificationError.textContent = '';
+                    }
+        
+                    // Certification Link
+                    if (certificationLink.value === '' || !linksRegix.test(certificationLink.value)) {
+                        lienduLaCertificationError.textContent = certificationLink.value === '' 
+                            ? 'Please enter Certification Link' 
+                            : 'Please enter a valid Certification Link';
+                        lienduLaCertificationError.style.color = "red";
+                        valid = false;
+                    } else {
+                        lienduLaCertificationError.textContent = '';
+                    }
+        
+                    // If form is valid, increment step and show the next step
+                    if (valid) {
+                        currentStep++;
+                        showStep(currentStep);
+                        updateProgressBar();
+                    } else {
+                        e.preventDefault();  // Prevent form submission if validation fails
+                    }
                 }
             });
         });
-
+        
+        
+        
         // Update the progress bar based on the current step
         function updateProgressBar() {
             const progressBar = document.querySelector('.bg-blue-600');
@@ -334,7 +636,7 @@
 
   
 
-//------------------------------------download cv as pdf part begins using jquery------------------------------------------------------
+//------------------------------------[download cv as pdf part begins using jquery]------------------------------------------------------
 
         function generatePDF() {
             var pdf = new jsPDF('p', 'pt', 'a4');//sets the orientation and measurement and paper size 
@@ -350,5 +652,11 @@
 /* | jsPDF adds new object with following parameters 'p'(orientation) -> portrait , 'pt' -> points(measurement) , 'a4' -> paper size 
 |  | addhtml add html contant to pdf 
 |  | 0 , 0 are coordiantes 
+| la protectuon contre crsf => attach that allows the attackers that are authorised to do unallow actions on browsers or set web (session /cookies -> i can access it /local storage-> i can not access it)
 |
+|
+|
+|
+
+
 | */
