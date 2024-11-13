@@ -51,33 +51,16 @@
    let certificationLink = document.getElementById('certification-link');
    let NomDuLaCertificationError = document.getElementById('Nom-de-la-certification');
    let lienduLaCertificationError = document.getElementById('lien-de-la-certification');
+   //--------------------------- [variables related to dynamic form]-------------------------------------- 
+   let addHardSkills = document.getElementById('add-hard-skill');
+   let addSoftSkills = document.getElementById('add-soft-skill');
    //------------------------- [regular expression for personal information validation]--------------------
 
    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
    const phoneRegix = /^0\d{9}$/;
    const addressRegix = /^[A-Za-z0-9\s,.'-]{3,}$/;
    const linksRegix = /^(https?:\/\/)?(www\.)?[a-z0-9-]+\.[a-z]{2,}(\/[a-z0-9-]+)*$/;
-        
 
-// let CertificationButton = document.getElementById('add-certification');
-// let certificationContainer = document.getElementById('certification-container');
-// let NextStep8 = document.getElementById('next-step8');
-// let IdCvCreation = document.getElementsByTagName('section');
-
-//     // CertificationButton.addEventListener('click',function(event){
-//     //             event.preventDefault;
-//     //             let input1 = document.createElement('input');
-//     //             input1.type = "text";
-//     //             input1.name="certification-name" ;
-//     //             input1.placeholder="Nom de la certification";
-//     //             input1.classList.add("w-full", "px-3", "py-2", "border border-gray-300", "rounded-md" , " focus:outline-none", "focus:ring-indigo-500" , "focus:border-indigo-500" , "sm:text-sm");
-//     //             let input2 = document.createElement('input');
-//     //             input2.type="link";
-//     //             input2.name="certification-link";
-//     //             input2.classList.add("w-ful" , "l px-3 py-2" , " border border-gray-300" , " rounded-md" , " focus:outline-none" , " focus:ring-indigo-500" , " focus:border-indigo-500" ,  "sm:text-sm");
-//     //             certificationContainer.appendChild(input1,input2);
-
-//     // });
 
 
 
@@ -108,11 +91,102 @@
             }
         }
 
- 
+//----------------------------------------------[functions of dynamic form ]-----------------------------------------------------------
+      //hard skill dynamic form function
+        function addHardSkill(){
+            let hardSkill = document.createElement('input');
+            hardSkill.type = "text";
+            hardSkill.id = "hard-skills";
+            hardSkill.placeholder = "New hard Skill";
+            hardSkill.name = "technical-skills";
+            hardSkill.classList.add("hardskillclass" ,"mt-1" , "block" , "w-full" , "px-3" , "py-2" , "border" , "border-gray-300" , "rounded-md" , "shadow-sm" , "focus:outline-none" , "focus:ring-indigo-500" , "focus:border-indigo-500" , "sm:text-sm");
+            let deletebtn = document.createElement('button');
+            deletebtn.id = "deleteBtn";
+            deletebtn.classList.add("px-4" ,"h-10px", "w-10px" , "py-2" , "bg-red-500" ,  "text-sky-600" , "rounded-md" , "hover:bg-green-200" , "focus:outline-none");
+
+            deletebtn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            `;
+
+            deletebtn.addEventListener('click',() => {
+                container.remove();
+            });
+            let container = document.createElement('div');
+            container.classList.add("flex","center-items");
+            container.appendChild(hardSkill);
+            container.appendChild(deletebtn);
+            addHardSkills.appendChild(container);
+           
+            updateSkillInfo(1);
+        
+        }
+
+      //soft skill dynamic form function
+        function addSoftSkill(){
+            let softSkillInput = document.createElement('input');
+            softSkillInput.type = "text";
+            softSkillInput.name = "soft-skills";
+            softSkillInput.placeholder = "Add New Soft Skill "
+            softSkillInput.classList.add("softskillclass" , "mt-1" , "block" , "w-full" , "px-3" , "py-2" , "border" , "border-gray-300" , "rounded-md" , "shadow-sm" , "focus:outline-none" , "focus:ring-indigo-500" , "focus:border-indigo-500" , "sm:text-sm");
+
+            let softskillsbtn = document.createElement('button');
+            softskillsbtn.type = "button";
+            softskillsbtn.classList.add("px-4" ,"h-10px", "w-10px" , "py-2" , "bg-red-500" ,  "text-sky-600" , "rounded-md" , "hover:bg-green-200" , "focus:outline-none");
+
+            softskillsbtn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            `;
+
+            softskillsbtn.addEventListener('click',() => {
+                softSkillInput.remove();
+                softskillsbtn.remove();
+            });
+
+            let container = document.createElement('div');
+            container.classList.add("flex","center-items");
+
+            container.appendChild(softSkillInput);
+            container.appendChild(softskillsbtn);
+            addSoftSkills.appendChild(container);
+
+            updateSkillInfo(2);
+
+        }
 //----------------------[the part that is related to all functionalities of the pages from the first one till last one] ------------------
 
+
+
+        let addSkillInfo = {addedHardSkill : [],addedSoftSkill :[]}
+
+        function updateSkillInfo(valeur){
+            if(valeur == 1){
+                const  addedHardSkillInputs = document.querySelectorAll('.hardskillclass');
+                addSkillInfo.addedHardSkill = []; 
         
-        // Initialize variables to keep track of the current step and the steps
+                addedHardSkillInputs.forEach((input) => {
+                    if (input.value) {
+                        addSkillInfo.addedHardSkill.push(input.value);  
+                    }
+                });
+          
+            }else if(valeur == 2){
+                const addedSoftSkillinputs = document.querySelectorAll('.softskillclass'); 
+                addSkillInfo.addedSoftSkill = []; 
+                addedSoftSkillinputs.forEach((input) => {
+                       if(input.value){
+                        addSkillInfo.addedSoftSkill.push(input.value);
+                       }
+                });
+            }
+         
+
+        }
+        
+
         let currentStep = 1;
         const totalSteps = 8;
 
@@ -123,7 +197,7 @@
         function showStep(step) {
             // Hide all steps using classlist functionality
             steps.forEach((el, index) => {
-                if (index + 1 === step) {
+                if (index + 1 == step) {
                     el.classList.remove('hidden');
                 } else {
                     el.classList.add('hidden');
@@ -146,242 +220,242 @@
                 } else {
                 
                 //-------------------------------------[ personal information form validation]-----------------------------------------
-                    // Full Name
-                    if (fullName.value === '' || fullName.value.length <= 4) {
-                        fullNameError.textContent = fullName.value === '' 
-                            ? "Please fill in your Full Name!" 
-                            : "Please Enter a name that contains more than 4 letters!";
-                        fullNameError.style.color = "red";
-                        valid = false;
-                    } else {
-                        fullNameError.textContent = '';
-                    }
+                    // // Full Name
+                    // if (fullName.value === '' || fullName.value.length <= 4) {
+                    //     fullNameError.textContent = fullName.value === '' 
+                    //         ? "Please fill in your Full Name!" 
+                    //         : "Please Enter a name that contains more than 4 letters!";
+                    //     fullNameError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     fullNameError.textContent = '';
+                    // }
         
-                    // Image Upload
-                    if (imageUpload.files.length === 0) {
-                        imageUploadError.textContent = "Please Upload Your Profile Image";
-                        imageUploadError.style.color = "red";
-                        valid = false;
-                    } else {
-                        imageUploadError.textContent = '';
-                    }
+                    // // Image Upload
+                    // if (imageUpload.files.length === 0) {
+                    //     imageUploadError.textContent = "Please Upload Your Profile Image";
+                    //     imageUploadError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     imageUploadError.textContent = '';
+                    // }
         
-                    // Email
-                    if (email.value === '' || !emailRegex.test(email.value)) {
-                        emailError.textContent = email.value === '' 
-                            ? "Please Enter your Email!" 
-                            : "Invalid Email, it should contain @ and finish with a domain like '.com'!";
-                        emailError.style.color = "red";
-                        valid = false;
-                    } else {
-                        emailError.textContent = '';
-                    }
+                    // // Email
+                    // if (email.value === '' || !emailRegex.test(email.value)) {
+                    //     emailError.textContent = email.value === '' 
+                    //         ? "Please Enter your Email!" 
+                    //         : "Invalid Email, it should contain @ and finish with a domain like '.com'!";
+                    //     emailError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     emailError.textContent = '';
+                    // }
         
-                    // Phone
-                    if (phone.value === '' || !phoneRegix.test(phone.value)) {
-                        phoneError.textContent = phone.value === '' 
-                            ? 'Please enter Your number!' 
-                            : 'Invalid Phone number!';
-                        phoneError.style.color = "red";
-                        valid = false;
-                    } else {
-                        phoneError.textContent = '';
-                    }
+                    // // Phone
+                    // if (phone.value === '' || !phoneRegix.test(phone.value)) {
+                    //     phoneError.textContent = phone.value === '' 
+                    //         ? 'Please enter Your number!' 
+                    //         : 'Invalid Phone number!';
+                    //     phoneError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     phoneError.textContent = '';
+                    // }
         
-                    // Address
-                    if (address.value === '' || !addressRegix.test(address.value)) {
-                        addressError.textContent = address.value === '' 
-                            ? 'Please enter Your address!' 
-                            : 'Please enter a Valid address!';
-                        addressError.style.color = "red";
-                        valid = false;
-                    } else {
-                        addressError.textContent = '';
-                    }
+                    // // Address
+                    // if (address.value === '' || !addressRegix.test(address.value)) {
+                    //     addressError.textContent = address.value === '' 
+                    //         ? 'Please enter Your address!' 
+                    //         : 'Please enter a Valid address!';
+                    //     addressError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     addressError.textContent = '';
+                    // }
         
-                    // LinkedIn
-                    if (linkedin.value === '' || !linksRegix.test(linkedin.value)) {
-                        linkedinError.textContent = linkedin.value === '' 
-                            ? 'Please Enter Your LinkedIn' 
-                            : 'Please Enter a valid LinkedIn link';
-                        linkedinError.style.color = "red";
-                        valid = false;
-                    } else {
-                        linkedinError.textContent = '';
-                    }
+                    // // LinkedIn
+                    // if (linkedin.value === '' || !linksRegix.test(linkedin.value)) {
+                    //     linkedinError.textContent = linkedin.value === '' 
+                    //         ? 'Please Enter Your LinkedIn' 
+                    //         : 'Please Enter a valid LinkedIn link';
+                    //     linkedinError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     linkedinError.textContent = '';
+                    // }
         
-                    // GitHub
-                    if (github.value === '' || !linksRegix.test(github.value)) {
-                        githubError.textContent = github.value === '' 
-                            ? 'Please Enter a valid GitHub' 
-                            : 'Please Enter Your GitHub';
-                        githubError.style.color = "red";
-                        valid = false;
-                    } else {
-                        githubError.textContent = '';
-                    }
+                    // // GitHub
+                    // if (github.value === '' || !linksRegix.test(github.value)) {
+                    //     githubError.textContent = github.value === '' 
+                    //         ? 'Please Enter a valid GitHub' 
+                    //         : 'Please Enter Your GitHub';
+                    //     githubError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     githubError.textContent = '';
+                    // }
         
-                    // Portfolio
-                    if (portfolio.value === '' || !linksRegix.test(portfolio.value)) {
-                        portfolioError.textContent = portfolio.value === '' 
-                            ? 'Please Enter Your Portfolio' 
-                            : 'Please Enter a valid Portfolio link';
-                        portfolioError.style.color = "red";
-                        valid = false;
-                    } else {
-                        portfolioError.textContent = '';
-                    }
+                    // // Portfolio
+                    // if (portfolio.value === '' || !linksRegix.test(portfolio.value)) {
+                    //     portfolioError.textContent = portfolio.value === '' 
+                    //         ? 'Please Enter Your Portfolio' 
+                    //         : 'Please Enter a valid Portfolio link';
+                    //     portfolioError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     portfolioError.textContent = '';
+                    // }
         
-                    //-----------------------------------[Validate Professional Details Form]-----------------------------
+                    // //-----------------------------------[Validate Professional Details Form]-----------------------------
         
-                    // Job Title
-                    if (jobTitle.value === '') {
-                        jobTitleError.textContent = 'Please enter your Job Title';
-                        jobTitleError.style.color = "red";
-                        valid = false;
-                    } else {
-                        jobTitleError.textContent = '';
-                    }
+                    // // Job Title
+                    // if (jobTitle.value === '') {
+                    //     jobTitleError.textContent = 'Please enter your Job Title';
+                    //     jobTitleError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     jobTitleError.textContent = '';
+                    // }
         
-                    // Profile Summary
-                    if (profileSummary.value === '') {
-                        profileSummaryError.textContent = 'Please enter a Profile Summary';
-                        profileSummaryError.style.color = "red";
-                        valid = false;
-                    } else {
-                        profileSummaryError.textContent = '';
-                    }
+                    // // Profile Summary
+                    // if (profileSummary.value === '') {
+                    //     profileSummaryError.textContent = 'Please enter a Profile Summary';
+                    //     profileSummaryError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     profileSummaryError.textContent = '';
+                    // }
         
-                    //-----------------------------------[Validate Skills Form]-----------------------------------------
+                    // //-----------------------------------[Validate Skills Form]-----------------------------------------
         
-                    // Technical Skills
-                    if (technicalSkills.value === '') {
-                        technicalSkillsError.textContent = 'Please enter your Technical Skills';
-                        technicalSkillsError.style.color = "red";
-                        valid = false;
-                    } else {
-                        technicalSkillsError.textContent = '';
-                    }
+                    // // Technical Skills
+                    // if (technicalSkills.value === '') {
+                    //     technicalSkillsError.textContent = 'Please enter your Technical Skills';
+                    //     technicalSkillsError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     technicalSkillsError.textContent = '';
+                    // }
         
-                    // Soft Skills
-                    if (softSkills.value === '') {
-                        softSkillsError.textContent = 'Please enter your Soft Skills';
-                        softSkillsError.style.color = "red";
-                        valid = false;
-                    } else {
-                        softSkillsError.textContent = '';
-                    }
+                    // // Soft Skills
+                    // if (softSkills.value === '') {
+                    //     softSkillsError.textContent = 'Please enter your Soft Skills';
+                    //     softSkillsError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     softSkillsError.textContent = '';
+                    // }
         
-                    //-----------------------------------[Validate Language Form]----------------------------------------
+                    // //-----------------------------------[Validate Language Form]----------------------------------------
         
-                    // Language
-                    if (language.value === '') {
-                        languageError.textContent = 'Please enter a Language';
-                        languageError.style.color = "red";
-                        valid = false;
-                    } else {
-                        languageError.textContent = '';
-                    }
+                    // // Language
+                    // if (language.value === '') {
+                    //     languageError.textContent = 'Please enter a Language';
+                    //     languageError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     languageError.textContent = '';
+                    // }
         
-                    // Language Level
-                    if (languageLevel.value === '') {
-                        languageLevelError.textContent = 'Please enter Language Level';
-                        languageLevelError.style.color = "red";
-                        valid = false;
-                    } else {
-                        languageLevelError.textContent = '';
-                    }
+                    // // Language Level
+                    // if (languageLevel.value === '') {
+                    //     languageLevelError.textContent = 'Please enter Language Level';
+                    //     languageLevelError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     languageLevelError.textContent = '';
+                    // }
         
-                    //------------------------------------[Validate Hobbies Form]----------------------------------------
+                    // //------------------------------------[Validate Hobbies Form]----------------------------------------
         
-                    // Hobbies
-                    if (hobbies.value === '') {
-                        hobbiesError.textContent = 'Please enter your Hobbies';
-                        hobbiesError.style.color = "red";
-                        valid = false;
-                    } else {
-                        hobbiesError.textContent = '';
-                    }
+                    // // Hobbies
+                    // if (hobbies.value === '') {
+                    //     hobbiesError.textContent = 'Please enter your Hobbies';
+                    //     hobbiesError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     hobbiesError.textContent = '';
+                    // }
         
-                    //-------------------------------------[Validate University Background Form]---------------------------
+                    // //-------------------------------------[Validate University Background Form]---------------------------
         
-                    // Degree
-                    if (degree.value === '') {
-                        diplomFormError.textContent = 'Please enter your Degree';
-                        diplomFormError.style.color = "red";
-                        valid = false;
-                    } else {
-                        diplomFormError.textContent = '';
-                    }
+                    // // Degree
+                    // if (degree.value === '') {
+                    //     diplomFormError.textContent = 'Please enter your Degree';
+                    //     diplomFormError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     diplomFormError.textContent = '';
+                    // }
         
-                    // University
-                    if (university.value === '') {
-                        diplomFormError.textContent = 'Please enter your University';
-                        diplomFormError.style.color = "red";
-                        valid = false;
-                    } else {
-                        diplomFormError.textContent = '';
-                    }
+                    // // University
+                    // if (university.value === '') {
+                    //     diplomFormError.textContent = 'Please enter your University';
+                    //     diplomFormError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     diplomFormError.textContent = '';
+                    // }
         
-                    // Year
-                    if (year.value === '') {
-                        diplomFormError.textContent = 'Please enter your Graduation Year';
-                        diplomFormError.style.color = "red";
-                        valid = false;
-                    } else {
-                        diplomFormError.textContent = '';
-                    }
+                    // // Year
+                    // if (year.value === '') {
+                    //     diplomFormError.textContent = 'Please enter your Graduation Year';
+                    //     diplomFormError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     diplomFormError.textContent = '';
+                    // }
         
-                    //----------------------------------[Validate Professional Experience Form]-----------------------------
+                    // //----------------------------------[Validate Professional Experience Form]-----------------------------
         
-                    // Job Title (Experience)
-                    if (job.value === '') {
-                        ExperienceError.textContent = 'Please enter Job Title';
-                        ExperienceError.style.color = "red";
-                        valid = false;
-                    } else {
-                        ExperienceError.textContent = '';
-                    }
+                    // // Job Title (Experience)
+                    // if (job.value === '') {
+                    //     ExperienceError.textContent = 'Please enter Job Title';
+                    //     ExperienceError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     ExperienceError.textContent = '';
+                    // }
         
-                    // Company
-                    if (company.value === '') {
-                        ExperienceError.textContent = 'Please enter Company Name';
-                        ExperienceError.style.color = "red";
-                        valid = false;
-                    } else {
-                        ExperienceError.textContent = '';
-                    }
+                    // // Company
+                    // if (company.value === '') {
+                    //     ExperienceError.textContent = 'Please enter Company Name';
+                    //     ExperienceError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     ExperienceError.textContent = '';
+                    // }
         
-                    // Duration
-                    if (duration.value === '') {
-                        ExperienceError.textContent = 'Please enter Duration';
-                        ExperienceError.style.color = "red";
-                        valid = false;
-                    } else {
-                        ExperienceError.textContent = '';
-                    }
+                    // // Duration
+                    // if (duration.value === '') {
+                    //     ExperienceError.textContent = 'Please enter Duration';
+                    //     ExperienceError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     ExperienceError.textContent = '';
+                    // }
         
-                    //------------------------------------------------[Validate Certifications Form]------------------------------
+                    // //------------------------------------------------[Validate Certifications Form]------------------------------
         
-                    // Certification Name
-                    if (certificationName.value === '') {
-                        NomDuLaCertificationError.textContent = 'Please enter Certification Name';
-                        NomDuLaCertificationError.style.color = "red";
-                        valid = false;
-                    } else {
-                        NomDuLaCertificationError.textContent = '';
-                    }
+                    // // Certification Name
+                    // if (certificationName.value === '') {
+                    //     NomDuLaCertificationError.textContent = 'Please enter Certification Name';
+                    //     NomDuLaCertificationError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     NomDuLaCertificationError.textContent = '';
+                    // }
         
-                    // Certification Link
-                    if (certificationLink.value === '' || !linksRegix.test(certificationLink.value)) {
-                        lienduLaCertificationError.textContent = certificationLink.value === '' 
-                            ? 'Please enter Certification Link' 
-                            : 'Please enter a valid Certification Link';
-                        lienduLaCertificationError.style.color = "red";
-                        valid = false;
-                    } else {
-                        lienduLaCertificationError.textContent = '';
-                    }
+                    // // Certification Link
+                    // if (certificationLink.value === '' || !linksRegix.test(certificationLink.value)) {
+                    //     lienduLaCertificationError.textContent = certificationLink.value === '' 
+                    //         ? 'Please enter Certification Link' 
+                    //         : 'Please enter a valid Certification Link';
+                    //     lienduLaCertificationError.style.color = "red";
+                    //     valid = false;
+                    // } else {
+                    //     lienduLaCertificationError.textContent = '';
+                    // }
         
                     // If form is valid, increment step and show the next step
                     if (valid) {
@@ -411,7 +485,7 @@
             // Collect data from all the form steps
             const personalInfo = {
                 name: document.getElementById('full-name').value,
-                photo: document.getElementById('file-upload').value,
+                photo: "",
                 email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
                 address: document.getElementById('address').value,
@@ -426,9 +500,10 @@
             };
 
             const skillsInfo = {
-                technicalSkills: document.getElementById('technical-skills').value,
+                technicalSkills: document.getElementById('hard-skills').value,
                 softSkills: document.getElementById('soft-skills').value
             };
+
 
             const languagesInfo = [];
             document.querySelectorAll('.language-entry').forEach(entry => {
@@ -471,9 +546,6 @@
                  <!-- Main Container -->
                 <div id="downloadCv" class="max-w-screen-lg mx-auto bg-white p-8 rounded-lg shadow-xl space-y-8">
                     <!-- Header Section -->
-                    <div class="flex justify-center mb-6">
-                        <img src="${personalInfo.photo}" alt="Profile Photo" class="rounded-full w-40 h-40 border-4 border-white shadow-lg">
-                    </div>
                     <div class="text-center mb-12">
                         <h1 class="text-4xl font-bold text-indigo-600 hover:text-indigo-800 transition duration-300">${personalInfo.name}</h1>
                         <p class="text-lg text-gray-600">${professionalInfo.jobTitle}</p>
@@ -584,9 +656,9 @@
                 <div id="downloadCv"  class="max-w-screen-xl mx-auto bg-white p-8 rounded-lg shadow-lg">
                     <div class="flex">
                         <div class="w-1/4 bg-stone-600 text-white p-6 rounded-l-lg">
-                            <div class="flex justify-center mb-6">
-                                <img src="${personalInfo.photo}" alt="Profile Photo" class="rounded-full w-32 h-32 border-4 border-white">
-                            </div>
+                          <div class="flex justify-center mb-6">
+                           <img id="profile-photo" src="" alt="Profile Photo" class="rounded-full w-32 h-32 border-4 border-white">
+                          </div
                             <h2 class="text-2xl font-semibold mb-2">${personalInfo.name}</h2>
                             <p class="text-sm mb-2">${professionalInfo.jobTitle}</p>
                             <p class="text-sm">Email: ${personalInfo.email}</p>
@@ -600,8 +672,15 @@
                             <h3 class="text-2xl font-semibold mb-4">Profile Summary</h3>
                             <p>${professionalInfo.profileSummary}</p>
                             <h3 class="text-2xl font-semibold mt-8 mb-4">Skills</h3>
-                            <p><strong>Technical Skills:</strong> ${skillsInfo.technicalSkills}</p>
-                            <p><strong>Soft Skills:</strong> ${skillsInfo.softSkills}</p>
+                            <p><strong>Technical Skills:</strong></p>
+                            <ul class="flex flex-wrap gap-2 mt-2">
+                            <li>${skillsInfo.technicalSkills}</li>
+                            ${addSkillInfo.addedHardSkill.map(skill => `
+                                <li>${skill}</li>
+                            `).join('')}
+                            </ul>
+                            <p><strong>Soft Skills:</strong></p>
+                             ${skillsInfo.softSkills} ${addSkillInfo.addedSoftSkill.join(' ')}</p>
                             <h3 class="text-2xl font-semibold mt-8 mb-4">Languages</h3>
                             ${languagesInfo.map(lang => `<p>${lang.language} - ${lang.level}</p>`).join('')}
                             <h3 class="text-2xl font-semibold mt-8 mb-4">Work Experience</h3>
@@ -619,7 +698,7 @@
             // Display the CV content in the last step
             downloadStep.innerHTML = `
 
-            ${classicCvContent}
+            ${modernCvContent}
 
                 <div class="flex justify-center mt-8">
                  <button id="download-pdf" class="px-6 py-3 bg-indigo-600 text-white rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300" onclick="generatePDF()">Download CV as PDF</button>
@@ -630,7 +709,7 @@
              downloadStep.classList.remove('hidden');
              stepper.classList.add('hidden');
              step8.classList.add('hidden');
-             
+             document.getElementById('main-wrapper').classList.add('hidden');            
         }
 
 
@@ -639,9 +718,9 @@
 //------------------------------------[download cv as pdf part begins using jquery]------------------------------------------------------
 
         function generatePDF() {
-            var pdf = new jsPDF('p', 'pt', 'a4');//sets the orientation and measurement and paper size 
+            var pdf = new jsPDF('l', 'pt', 'a4');//sets the orientation and measurement and paper size 
             $("#download-pdf").attr('hidden', 'true') //hide button just for decoration purposes
-            pdf.addHTML($("#downloadCv"), 0, -20, function () {
+            pdf.addHTML($("#downloadCv"), -1, -1, function () {
             pdf.save('cv.pdf');
             $("#download-pdf").removeAttr('hidden', 'true')//show the button after hiding it
         });
@@ -652,8 +731,19 @@
 /* | jsPDF adds new object with following parameters 'p'(orientation) -> portrait , 'pt' -> points(measurement) , 'a4' -> paper size 
 |  | addhtml add html contant to pdf 
 |  | 0 , 0 are coordiantes 
-| la protectuon contre crsf => attach that allows the attackers that are authorised to do unallow actions on browsers or set web (session /cookies -> i can access it /local storage-> i can not access it)
-|
+|  la protectuon contre crsf => attach that allows the attackers that are authorised to do unallow actions on browsers or set web (session /cookies -> i can access it /local storage-> i can not access it)
+|  la functional
+   ----------------------------
+   const {jspdf} = window.jspdf
+   const doc = new jspdf();
+   const input = $('input1').value
+   doc.setFont('arial');
+   doc.setFontize(18);
+   doc.stTextcolor(20,50,80);
+   doc.text("kkfdllfd"100 , 20)
+
+   doc.save('cv.pdf')
+  -----------------------------
 |
 |
 |

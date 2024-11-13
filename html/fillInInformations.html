@@ -26,7 +26,7 @@
         </div>
       </div>
 
-      <div class="form-step  relative max-h-screen hidden">
+      <div  class="form-step  relative max-h-screen hidden">
      
         <!-- Background Image -->
         <!-- <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('../assets/Images/background.jpg');">
@@ -44,7 +44,7 @@
               <p id="full-name-error"></p>
             </div>
       
-            <!-- Profile Photo -->
+            <!-- Profile Photo Section -->
             <div class="flex flex-col md:flex-row gap-4">
               <div class="w-full md:w-1/2">
                 <label for="photo" class="block text-sm font-medium text-gray-700">Photo de profil</label>
@@ -53,11 +53,11 @@
                     <svg class="h-16 w-16 text-gray-480 mx-auto" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                       <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clip-rule="evenodd" />
                     </svg>
-                    <div class="mt-4 flex text-sm/6 text-gray-600">
-                        <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                          <span>Upload Photo</span>
-                          <input id="file-upload" name="file-upload" type="file" class="sr-only">
-                        </label>
+                    <div class="mt-4 flex text-sm text-gray-600">
+                      <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
+                        <span>Upload Photo</span>
+                        <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -164,20 +164,29 @@
                 <form id="skills-form" class="space-y-4">
                 <div>
                     <label for="technical-skills" class="block text-sm font-medium text-gray-700">Compétences techniques (Hard Skills)</label>
-                    <input type="text" id="technical-skills" name="technical-skills" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    <input placeholder="add hard skill" type="text" id="hard-skills" name="technical-skills" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                     <p id="hard-skill-error"></p>
                 </div>
+
+                <div id="add-hard-skill">
+
+                </div>
+                <button type="button" id="hard-skill" class="px-4 py-2 bg-sky-200 text-sky-600 rounded-md hover:bg-green-200 focus:outline-none" onclick="addHardSkill()">
+                  + Ajouter autre compétance 
+                </button>
             
                 <div>
                     <label for="soft-skills" class="block text-sm font-medium text-gray-700">Compétences interpersonnelles (Soft Skills)</label>
-                    <input type="text" id="soft-skills" name="soft-skills" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                    <input placeholder="Add Soft Skill" type="text" id="soft-skills" name="soft-skills" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                     <p id="soft-skill-error"></p>
                 </div>
 
-                <button type="button" id="add-certification" class="px-4 py-2 bg-sky-200 text-sky-600 rounded-md hover:bg-green-200 focus:outline-none">
+                <div id="add-soft-skill">
+
+                </div>
+                <button type="button" id="soft-skill" class="px-4 py-2 bg-sky-200 text-sky-600 rounded-md hover:bg-green-200 focus:outline-none" onclick="addSoftSkill()">
                   + Ajouter autre compétance
-              </button>
-          
+               </button>
             
                 <div class="mt-4 flex justify-between">
                     <button type="button" id="next-step3" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
@@ -211,7 +220,9 @@
             <button type="button" id="add-certification" class="px-4 py-2 bg-sky-200 text-sky-600 rounded-md hover:bg-green-200 focus:outline-none">
               + Ajouter une language
             </button>
-      
+            <div>
+
+            </div>
         
             <div class="mt-4 flex justify-between">
                 <button type="button" id="next-step4" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
@@ -242,7 +253,9 @@
                 <button type="button" id="add-certification" class="px-4 py-2 bg-sky-200 text-sky-600 rounded-md hover:bg-green-200 focus:outline-none">
                     + Ajouter une autre loisirs
                 </button>
-            
+                <div>
+                  
+                </div>
             
                 <div class="mt-4 flex justify-between">
                     <button type="button" id="next-step5" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
@@ -275,7 +288,9 @@
                 <button type="button" id="add-certification" class="px-4 py-2 bg-sky-200 text-sky-600 rounded-md hover:bg-green-200 focus:outline-none">
                     + Ajouter un diplome
                 </button>
-            
+                <div>
+
+                </div>
             
                 <div class="mt-4 flex justify-between">
                     <button type="button" id="next-step6" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
@@ -307,7 +322,9 @@
                    <button type="button" id="add-certification" class="px-4 py-2 bg-sky-200 text-sky-600 rounded-md hover:bg-green-200 focus:outline-none">
                     + Ajouter une Experience
                    </button>
-            
+                   <div>
+
+                   </div>
         
                     <div class="mt-4 flex justify-between">
                     <button type="button" id="next-step7" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
