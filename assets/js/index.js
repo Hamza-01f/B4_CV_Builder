@@ -26,14 +26,15 @@
    let profileSummary = document.getElementById('profile-summary');
    let profileSummaryError = document.getElementById('profile-summary-error');
    //-------------------------- [variables for hard & soft skills form validation]--------------------------
-   let technicalSkills = document.getElementById('technical-skills');
+   let technicalSkills = document.getElementById('hard-skills');
    let technicalSkillsError = document.getElementById('hard-skill-error');
    let softSkills = document.getElementById('soft-skills');
    let softSkillsError = document.getElementById('soft-skill-error')
    //-------------------------- [variables for language form validation] -----------------------------------
    let language = document.getElementById('language');
    let languageLevel = document.getElementById('language-level');
-   let languageError = document.getElementById('language-entry-error');
+   let languageError = document.getElementById('language-error');
+   let languageLevelError = document.getElementById('language-error-level');
    //-------------------------- [variables for hobbies form validation] -----------------------------------
    let hobbies = document.getElementById('hobbies');
    let hobbiesError = document.getElementById('hobbies-error');
@@ -41,12 +42,16 @@
    let degree = document.getElementById('degree');
    let university = document.getElementById('university');
    let year = document.getElementById('year');
-   let diplomFormError = document.getElementById('diplom-form-error');
+   let DegreeError = document.getElementById('diplom-degree-error');
+   let UniversityError = document.getElementById('diplom-university-error');
+   let yearError = document.getElementById('diplom-year-error');
    //---------------------------- [variables that are related to professional experience validation] ------
    let job = document.getElementById('job-title');
    let company = document.getElementById('company');
    let duration = document.getElementById('duration');
-   let ExperienceError = document.getElementById('Experience-error');
+   let jobError = document.getElementById('job-error');
+   let companyError = document.getElementById('company-error');
+   let durationrrorE = document.getElementById('duration-error');
    //--------------------------- [variables that are related to certifications validation] ---------------
    let certificationName = document.getElementById('certification-name');
    let certificationLink = document.getElementById('certification-link');
@@ -60,12 +65,17 @@
    let cursusUniversitaire = document.getElementById('cursusUniversitaire');
    let professionalExperience = document.getElementById('professional-experience');
    let certificationId = document.getElementById('certification-id');
-   //------------------------- [regular expression for form validation]--------------------
-
-   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-   const phoneRegix = /^0\d{9}$/;
+   //------------------------- [regular expression for form validation]-------------------
+  
+   
+   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; 
+   const phoneRegix = /^\d{10}$/; 
    const addressRegix = /^[A-Za-z0-9\s,.'-]{3,}$/;
-   const linksRegix = /^(https?:\/\/)?(www\.)?[a-z0-9-]+\.[a-z]{2,}(\/[a-z0-9-]+)*$/;
+   const linksRegix = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-]*)*$/;  
+   const SummaryRegix = /^.{20,120}$/;  
+//    const YearRegix = /^\d{3}$/;
+   const DurationRegix = /^\d+\s+(years?|months?|weeks?|days?)$/;
+   const WordsRegix  = /^[a-zA-Z\s\-.,]+$/;
 
 
 
@@ -382,7 +392,7 @@
                 const degreeInputs = document.querySelectorAll('.degree');
                 const universityInputs = document.querySelectorAll('.university');
                 const yearInputs = document.querySelectorAll('.year');
-                formData.addedEducation = []; // Clear previous data
+                formData.addedEducation = [];
             
                 if (degreeInputs.length === universityInputs.length && degreeInputs.length === yearInputs.length) {
                     degreeInputs.forEach((degreeInput, index) => {
@@ -390,7 +400,7 @@
                         const university = universityInputs[index].value;
                         const year = yearInputs[index].value;
             
-                        // Only add valid data
+                        
                         if (degree && university && year) {
                             formData.addedEducation.push({ degree, university, year });
                         }
@@ -440,7 +450,6 @@
         let currentStep = 1;
         const totalSteps = 8;
 
-        // Get the step divs and hide all except the first one
         const steps = document.querySelectorAll('.form-step');
         
         // Function to show the next step
@@ -454,7 +463,10 @@
                 }
             });
         }
+        
+        function jobInfoValidation(valid){
 
+        }
         // Show the first step initially
         showStep(currentStep);
 
@@ -466,246 +478,225 @@
         
                 // If it's the last step, generate the CV
                 if (currentStep === totalSteps) {
-                    generateCV();  
+                    generateCV(valid);  
                 } else {
                 
-                //-------------------------------------[ personal information form validation]-----------------------------------------
-                    // // Full Name
-                    // if (fullName.value === '' || fullName.value.length <= 4) {
-                    //     fullNameError.textContent = fullName.value === '' 
-                    //         ? "Please fill in your Full Name!" 
-                    //         : "Please Enter a name that contains more than 4 letters!";
-                    //     fullNameError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     fullNameError.textContent = '';
-                    // }
+                 //-------------------------------------[ personal information form validation]-----------------------------------------
+                  if(currentStep == 1){
+                                        // Full Name
+                                        if (fullName.value === '' || !WordsRegix.test(fullName.value)) {
+                                            fullName.value === '' ? fullNameError.textContent = "Please fill in your Full Name!" : fullNameError.textContent = "Please Enter a name that contains more than 4 letters!";
+                                            fullNameError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            fullNameError.textContent = '';
+                                        }
+                            
+                                        // // Email
+                                        if (email.value === '' || !emailRegex.test(email.value)) {
+                                            email.value === '' ? emailError.textContent = "Please Enter your Email!" : emailError.textContent = "Invalid Email, it should contain @ and finish with a domain like '.com'!";
+                                            emailError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            emailError.textContent = '';
+                                        }
+                            
+                                        // // // Phone
+                                        if (phone.value === '' || !phoneRegix.test(phone.value)) {
+                                            phone.value === '' ? phoneError.textContent='Please enter Your number!' : phoneError.textContent = 'Invalid Phone number!';
+                                            phoneError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            phoneError.textContent = '';
+                                        }
+                            
+                                        // // Address
+                                        if (address.value === '' || !addressRegix.test(address.value)) {
+                                            address.value === '' ? addressError.textContent = 'Please enter Your address!' : addressError.textContent = 'Please enter a Valid address!';
+                                            addressError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            addressError.textContent = '';
+                                        }
+                            
+                                        // // // LinkedIn
+                                        if (linkedin.value === '' || !linksRegix.test(linkedin.value)) {
+                                            linkedin.value === '' ? linkedinError.textContent = 'Please Enter Your LinkedIn' : linkedinError.textContent = 'Please Enter a valid LinkedIn link';
+                                            linkedinError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            linkedinError.textContent = '';
+                                        }
+                            
+                                        // // // GitHub
+                                        if (github.value === '' || !linksRegix.test(github.value)) {
+                                            github.value === '' ? githubError.textContent  = 'Please Enter Your GitHub'  : githubError.textContent = 'Please Enter a valid GitHub link';
+                                            githubError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            githubError.textContent = '';
+                                        }
+                            
+                                        // // // Portfolio
+                                        if (portfolio.value === '' || !linksRegix.test(portfolio.value)) {
+                                            portfolio.value === '' ? portfolioError.textContent = 'Please Enter Your Portfolio' : portfolioError.textContent = 'Please Enter a valid Portfolio link';
+                                            portfolioError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            portfolioError.textContent = '';
+                                        }
+                            
+                    }else if(currentStep == 2){
+                                        // //-----------------------------------[Validate Professional Details Form]-----------------------------
+                    
+                                        // Job Title
+                                        if (jobTitle.value === '' || !WordsRegix.test(jobTitle.value)) {
+                                            jobTitle.value === '' ? jobTitleError.textContent = 'Please enter your Job Title' : jobTitleError.textContent = 'Please Enter a Valid Title Job!';
+                                            jobTitleError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            jobTitleError.textContent = '';
+                                        }
+                            
+                                        // Profile Summary
+                                        if (profileSummary.value === '' || !SummaryRegix.test(profileSummary.value)) {
+                                            profileSummary.value === '' ? profileSummaryError.textContent = 'Please enter a Profile Summary' : profileSummaryError.textContent = 'Number of caracters shoud be at least 20 and less than 120';
+                                            profileSummaryError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            profileSummaryError.textContent = '';
+                                        }
+                    }else if(currentStep == 3 ){
+                                        // //-----------------------------------[Validate Skills Form]-----------------------------------------
+                            
+                                        // Technical Skills
+                                        if (technicalSkills.value === '' || !WordsRegix .test(technicalSkills.value)) {
+                                            technicalSkills.value === '' ? technicalSkillsError.textContent = 'Please enter your Hard Skill' : technicalSkillsError.textContent = 'Please Enter a Valid hard Skill';
+                                            technicalSkillsError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            technicalSkillsError.textContent = '';
+                                        }
+                            
+                                        // Soft Skills
+                                        if (softSkills.value === '' || !WordsRegix.test(softSkills.value)) {
+                                            softSkills.value === '' ?  softSkillsError.textContent = 'Please enter your Soft Skill' : softSkillsError.textContent = 'Please Enter a valid soft skill';
+                                            softSkillsError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            softSkillsError.textContent = '';
+                                        }
         
-                    // // Image Upload
-                    // if (imageUpload.files.length === 0) {
-                    //     imageUploadError.textContent = "Please Upload Your Profile Image";
-                    //     imageUploadError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     imageUploadError.textContent = '';
-                    // }
+                    }else if(currentStep == 4 ){
+                                        // //-----------------------------------[Validate Language Form]----------------------------------------
+                            
+                                        // Language
+                                        if (language.value === '' || !WordsRegix.test(language.value)) {
+                                            language.value === '' ? languageError.textContent = 'Please enter a Language' : languageError.textContent = 'Please enter a Valid language';
+                                            languageError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            languageError.textContent = '';
+                                        }
+                                        // Language Level
+                                        if (languageLevel.value === '' || !WordsRegix.test(language.value)) {
+                                            languageLevel.value === '' ? languageLevelError.textContent = 'Please enter Language Level' :  languageLevelError.textContent = 'Please Enter a Valid language level';
+                                            languageLevelError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            languageLevelError.textContent = '';
+                                        }
+                    }else if(currentStep == 5 ){
+                                        // //------------------------------------[Validate Hobbies Form]----------------------------------------
+                            
+                                        // Hobbies
+                                        if (hobbies.value === '' || !WordsRegix.test(hobbies.value)) {
+                                            hobbies.value === '' ? hobbiesError.textContent = 'Please enter your Hobbies' : hobbiesError.textContent = 'Please Enter a Valid Hobby Name';
+                                            hobbiesError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            hobbiesError.textContent = '';
+                                        }
+                    }else if(currentStep == 6){
+                                        // //-------------------------------------[Validate University Background Form]---------------------------
+                            
+                                        // Degree
+                                        if (degree.value === '' || !WordsRegix.test(degree.value)) {
+                                            degree.value === '' ? DegreeError.textContent = 'Please enter your Degree' : DegreeError.textContent = 'Please Enter a valid degree Name';
+                                            DegreeError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            DegreeError.textContent = '';
+                                        }
+                            
+                                        // University
+                                        if (university.value === '' || !WordsRegix.test(university.value)) {
+                                            university.value === '' ? UniversityError.textContent = 'Please enter your University Name' : UniversityError .textContent = 'Please Enter a Valid University Name';
+                                            UniversityError .style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            UniversityError .textContent = '';
+                                        }
+                            
+                                        // // Year
+                                        if (year.value === '' ) {
+                                            year.value === '' ? yearError.textContent = 'Please enter your Graduation Year' : yearError.textContent = 'Please enter valid Graduation Year';
+                                            yearError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            yearError.textContent = '';
+                                        }
         
-                    // // Email
-                    // if (email.value === '' || !emailRegex.test(email.value)) {
-                    //     emailError.textContent = email.value === '' 
-                    //         ? "Please Enter your Email!" 
-                    //         : "Invalid Email, it should contain @ and finish with a domain like '.com'!";
-                    //     emailError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     emailError.textContent = '';
-                    // }
-        
-                    // // Phone
-                    // if (phone.value === '' || !phoneRegix.test(phone.value)) {
-                    //     phoneError.textContent = phone.value === '' 
-                    //         ? 'Please enter Your number!' 
-                    //         : 'Invalid Phone number!';
-                    //     phoneError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     phoneError.textContent = '';
-                    // }
-        
-                    // // Address
-                    // if (address.value === '' || !addressRegix.test(address.value)) {
-                    //     addressError.textContent = address.value === '' 
-                    //         ? 'Please enter Your address!' 
-                    //         : 'Please enter a Valid address!';
-                    //     addressError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     addressError.textContent = '';
-                    // }
-        
-                    // // LinkedIn
-                    // if (linkedin.value === '' || !linksRegix.test(linkedin.value)) {
-                    //     linkedinError.textContent = linkedin.value === '' 
-                    //         ? 'Please Enter Your LinkedIn' 
-                    //         : 'Please Enter a valid LinkedIn link';
-                    //     linkedinError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     linkedinError.textContent = '';
-                    // }
-        
-                    // // GitHub
-                    // if (github.value === '' || !linksRegix.test(github.value)) {
-                    //     githubError.textContent = github.value === '' 
-                    //         ? 'Please Enter a valid GitHub' 
-                    //         : 'Please Enter Your GitHub';
-                    //     githubError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     githubError.textContent = '';
-                    // }
-        
-                    // // Portfolio
-                    // if (portfolio.value === '' || !linksRegix.test(portfolio.value)) {
-                    //     portfolioError.textContent = portfolio.value === '' 
-                    //         ? 'Please Enter Your Portfolio' 
-                    //         : 'Please Enter a valid Portfolio link';
-                    //     portfolioError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     portfolioError.textContent = '';
-                    // }
-        
-                    // //-----------------------------------[Validate Professional Details Form]-----------------------------
-        
-                    // // Job Title
-                    // if (jobTitle.value === '') {
-                    //     jobTitleError.textContent = 'Please enter your Job Title';
-                    //     jobTitleError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     jobTitleError.textContent = '';
-                    // }
-        
-                    // // Profile Summary
-                    // if (profileSummary.value === '') {
-                    //     profileSummaryError.textContent = 'Please enter a Profile Summary';
-                    //     profileSummaryError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     profileSummaryError.textContent = '';
-                    // }
-        
-                    // //-----------------------------------[Validate Skills Form]-----------------------------------------
-        
-                    // // Technical Skills
-                    // if (technicalSkills.value === '') {
-                    //     technicalSkillsError.textContent = 'Please enter your Technical Skills';
-                    //     technicalSkillsError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     technicalSkillsError.textContent = '';
-                    // }
-        
-                    // // Soft Skills
-                    // if (softSkills.value === '') {
-                    //     softSkillsError.textContent = 'Please enter your Soft Skills';
-                    //     softSkillsError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     softSkillsError.textContent = '';
-                    // }
-        
-                    // //-----------------------------------[Validate Language Form]----------------------------------------
-        
-                    // // Language
-                    // if (language.value === '') {
-                    //     languageError.textContent = 'Please enter a Language';
-                    //     languageError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     languageError.textContent = '';
-                    // }
-        
-                    // // Language Level
-                    // if (languageLevel.value === '') {
-                    //     languageLevelError.textContent = 'Please enter Language Level';
-                    //     languageLevelError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     languageLevelError.textContent = '';
-                    // }
-        
-                    // //------------------------------------[Validate Hobbies Form]----------------------------------------
-        
-                    // // Hobbies
-                    // if (hobbies.value === '') {
-                    //     hobbiesError.textContent = 'Please enter your Hobbies';
-                    //     hobbiesError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     hobbiesError.textContent = '';
-                    // }
-        
-                    // //-------------------------------------[Validate University Background Form]---------------------------
-        
-                    // // Degree
-                    // if (degree.value === '') {
-                    //     diplomFormError.textContent = 'Please enter your Degree';
-                    //     diplomFormError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     diplomFormError.textContent = '';
-                    // }
-        
-                    // // University
-                    // if (university.value === '') {
-                    //     diplomFormError.textContent = 'Please enter your University';
-                    //     diplomFormError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     diplomFormError.textContent = '';
-                    // }
-        
-                    // // Year
-                    // if (year.value === '') {
-                    //     diplomFormError.textContent = 'Please enter your Graduation Year';
-                    //     diplomFormError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     diplomFormError.textContent = '';
-                    // }
-        
-                    // //----------------------------------[Validate Professional Experience Form]-----------------------------
-        
-                    // // Job Title (Experience)
-                    // if (job.value === '') {
-                    //     ExperienceError.textContent = 'Please enter Job Title';
-                    //     ExperienceError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     ExperienceError.textContent = '';
-                    // }
-        
-                    // // Company
-                    // if (company.value === '') {
-                    //     ExperienceError.textContent = 'Please enter Company Name';
-                    //     ExperienceError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     ExperienceError.textContent = '';
-                    // }
-        
-                    // // Duration
-                    // if (duration.value === '') {
-                    //     ExperienceError.textContent = 'Please enter Duration';
-                    //     ExperienceError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     ExperienceError.textContent = '';
-                    // }
-        
-                    // //------------------------------------------------[Validate Certifications Form]------------------------------
-        
-                    // // Certification Name
-                    // if (certificationName.value === '') {
-                    //     NomDuLaCertificationError.textContent = 'Please enter Certification Name';
-                    //     NomDuLaCertificationError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     NomDuLaCertificationError.textContent = '';
-                    // }
-        
-                    // // Certification Link
-                    // if (certificationLink.value === '' || !linksRegix.test(certificationLink.value)) {
-                    //     lienduLaCertificationError.textContent = certificationLink.value === '' 
-                    //         ? 'Please enter Certification Link' 
-                    //         : 'Please enter a valid Certification Link';
-                    //     lienduLaCertificationError.style.color = "red";
-                    //     valid = false;
-                    // } else {
-                    //     lienduLaCertificationError.textContent = '';
-                    // }
+                    }else if(currentStep == 7){
+                                        // //----------------------------------[Validate Professional Experience Form]-----------------------------
+                            
+                                        // Job Title (Experience)
+                                        if (job.value === '' || !WordsRegix.test(job.value)) {
+                                            job.value === '' ?  jobError.textContent = 'Please enter Job Title' :  jobError.textContent = 'Please Enter a valid job Title';
+                                            jobError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            jobError.textContent = '';
+                                        }
+                            
+                                        // Company
+                                        if (company.value === '' || !WordsRegix.test(company.value)) {
+                                            company.value === '' ? companyError.textContent = 'Please enter Company Name' : companyError.textContent = 'Please Enter a Valid Company Name';
+                                            companyError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            companyError.textContent = '';
+                                        }
+                            
+                                        // Duration
+                                        if (duration.value === '' || !DurationRegix .test(duration.value)) {
+                                            duration.value === '' ? durationrrorE.textContent = 'Please enter Duration' :  durationrrorE.textContent = 'Please Enter a valid duration';
+                                            durationrrorE.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            durationrrorE.textContent = '';
+                                        }
+                    }else {
+                                        // //------------------------------------------------[Validate Certifications Form]------------------------------
+                            
+                                        // // Certification Name
+                                        if (certificationName.value === '' || !WordsRegix.test(certificationName.value)) {
+                                            certificationName.value === '' ? NomDuLaCertificationError.textContent = 'Please enter Certification Name' : NomDuLaCertificationError.textContent = 'Please Enter valid Certification Name';
+                                            NomDuLaCertificationError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            NomDuLaCertificationError.textContent = '';
+                                        }
+                            
+                                        // Certification Link
+                                        if (certificationLink.value === '' || !linksRegix.test(certificationLink.value)) {
+                                            certificationLink.value === '' ? lienduLaCertificationError.textContent = 'Please enter Certification Link' : lienduLaCertificationError.textContent = 'Please enter a valid Certification Link';
+                                            lienduLaCertificationError.style.color = "red";
+                                            valid = false;
+                                        } else {
+                                            lienduLaCertificationError.textContent = '';
+                                        }
+                    }
         
                     // If form is valid, increment step and show the next step
                     if (valid) {
@@ -733,6 +724,7 @@
         // Generate CV and display it in the last step
         function generateCV() {
             // Collect data from all the form steps
+
             const personalInfo = {
                 name: document.getElementById('full-name').value,
                 photo: "",
@@ -792,6 +784,9 @@
             });
 
 
+            const fileInput = document.querySelector('.image-upload').files[0];
+            inputPhoto = URL.createObjectURL(fileInput);
+
             const CvContent = `
              
                 <main id="downloadCv" class="font-jost hyphens-manual">
@@ -801,7 +796,7 @@
                             <div class="w-1/3 bg-gradient-to-l from-neutral-500 to-gray-300 p-6 border-r border-gray-300">
                                 <!-- Profile Picture -->
                                 <div class="flex justify-center mb-6">
-                                    <img src="${personalInfo.photo}" alt="Profile" class="rounded-full w-32 h-32 object-cover border-4 border-gray-300 shadow-lg">
+                                    <img src="${inputPhoto}" alt="Profile" class="rounded-full w-32 h-32 object-cover border-4 border-gray-300 shadow-lg">
                                 </div>
 
                                 <!-- Personal Information -->
@@ -886,7 +881,7 @@
 
             ${CvContent}
             <div class="flex justify-center mt-8">
-                <button id="download-pdf" class="inline-block bg-gradient-to-r from-lime-500 to-green-500 text-slate-950 py-3 px-8 rounded-lg text-lg font-semibold border-animation hover:bg-gradient-to-l hover:from-cyan-500 hover:to-purple-500 transition duration-300 transform hover:scale-105">Download as PDF</button>
+                <button id="download-pdf" class="inline-block bg-gradient-to-r from-lime-500 to-green-500 text-slate-950 py-3 px-8 rounded-lg text-lg font-semibold border-animation hover:bg-gradient-to-l hover:from-cyan-500 hover:to-purple-500 transition duration-300 transform hover:scale-105" onclick="generatePDF()">Download as PDF</button>
             </div>
 
                `;
@@ -896,30 +891,7 @@
              step8.classList.add('hidden');
              document.getElementById('main-wrapper').classList.add('hidden'); 
              
-             document.addEventListener("DOMContentLoaded", function () {
-                let DownloadBtn = document.getElementById('download-pdf');
-                let downloadCv = document.getElementById('downloadCv');
-              
-                if (DownloadBtn && downloadCv) {  
-                  DownloadBtn.addEventListener("click", async function () {
-                    const filename = "cv.pdf";
-                    const options = {
-                      margin: 0,
-                      filename: filename,
-                      image: { type: "jpeg", quality: 0.98 },
-                      html2canvas: { scale: 2 },
-                      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-                    };
-                    try {
-                      await html2pdf().set(options).from(downloadCv).save(filename);
-                    } catch (error) {
-                      console.error("Error:", error.message);
-                    }
-                  });
-                } else {
-                  console.log("Elements not found");
-                }
-              });
+
         }
         
 
@@ -935,6 +907,23 @@
         // });
         
         // }
+
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;  
+            const pdf = new jsPDF('l', 'pt', 'a4');
+        
+            const content = document.getElementById('downloadCv'); 
+        
+       
+            pdf.html(content, {
+              callback: function (doc) {
+                doc.save('cv.pdf');  
+              },
+              x: 10,  
+              y: 10,  
+              width: 500,  
+            });
+          }
 
           
         
@@ -958,7 +947,7 @@
   -----------------------------
 |let input = document.queryselector(".photo").files[0];
  
-|
+|attribute selector
 |
 
 
