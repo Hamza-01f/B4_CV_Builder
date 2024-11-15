@@ -481,222 +481,222 @@
                     generateCV(valid);  
                 } else {
                 
-                 //-------------------------------------[ personal information form validation]-----------------------------------------
-                  if(currentStep == 1){
-                                        // Full Name
-                                        if (fullName.value === '' || !WordsRegix.test(fullName.value)) {
-                                            fullName.value === '' ? fullNameError.textContent = "Please fill in your Full Name!" : fullNameError.textContent = "Please Enter a name that contains more than 4 letters!";
-                                            fullNameError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            fullNameError.textContent = '';
-                                        }
+                //  //-------------------------------------[ personal information form validation]-----------------------------------------
+                //   if(currentStep == 1){
+                //                         // Full Name
+                //                         if (fullName.value === '' || !WordsRegix.test(fullName.value)) {
+                //                             fullName.value === '' ? fullNameError.textContent = "Please fill in your Full Name!" : fullNameError.textContent = "Please Enter a name that contains more than 4 letters!";
+                //                             fullNameError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             fullNameError.textContent = '';
+                //                         }
                             
-                                        // // Email
-                                        if (email.value === '' || !emailRegex.test(email.value)) {
-                                            email.value === '' ? emailError.textContent = "Please Enter your Email!" : emailError.textContent = "Invalid Email, it should contain @ and finish with a domain like '.com'!";
-                                            emailError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            emailError.textContent = '';
-                                        }
+                //                         // // Email
+                //                         if (email.value === '' || !emailRegex.test(email.value)) {
+                //                             email.value === '' ? emailError.textContent = "Please Enter your Email!" : emailError.textContent = "Invalid Email, it should contain @ and finish with a domain like '.com'!";
+                //                             emailError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             emailError.textContent = '';
+                //                         }
                             
-                                        // // // Phone
-                                        if (phone.value === '' || !phoneRegix.test(phone.value)) {
-                                            phone.value === '' ? phoneError.textContent='Please enter Your number!' : phoneError.textContent = 'Invalid Phone number!';
-                                            phoneError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            phoneError.textContent = '';
-                                        }
+                //                         // // // Phone
+                //                         if (phone.value === '' || !phoneRegix.test(phone.value)) {
+                //                             phone.value === '' ? phoneError.textContent='Please enter Your number!' : phoneError.textContent = 'Invalid Phone number!';
+                //                             phoneError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             phoneError.textContent = '';
+                //                         }
                             
-                                        // // Address
-                                        if (address.value === '' || !addressRegix.test(address.value)) {
-                                            address.value === '' ? addressError.textContent = 'Please enter Your address!' : addressError.textContent = 'Please enter a Valid address!';
-                                            addressError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            addressError.textContent = '';
-                                        }
+                //                         // // Address
+                //                         if (address.value === '' || !addressRegix.test(address.value)) {
+                //                             address.value === '' ? addressError.textContent = 'Please enter Your address!' : addressError.textContent = 'Please enter a Valid address!';
+                //                             addressError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             addressError.textContent = '';
+                //                         }
                             
-                                        // // // LinkedIn
-                                        if (linkedin.value === '' || !linksRegix.test(linkedin.value)) {
-                                            linkedin.value === '' ? linkedinError.textContent = 'Please Enter Your LinkedIn' : linkedinError.textContent = 'Please Enter a valid LinkedIn link';
-                                            linkedinError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            linkedinError.textContent = '';
-                                        }
+                //                         // // // LinkedIn
+                //                         if (linkedin.value === '' || !linksRegix.test(linkedin.value)) {
+                //                             linkedin.value === '' ? linkedinError.textContent = 'Please Enter Your LinkedIn' : linkedinError.textContent = 'Please Enter a valid LinkedIn link';
+                //                             linkedinError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             linkedinError.textContent = '';
+                //                         }
                             
-                                        // // // GitHub
-                                        if (github.value === '' || !linksRegix.test(github.value)) {
-                                            github.value === '' ? githubError.textContent  = 'Please Enter Your GitHub'  : githubError.textContent = 'Please Enter a valid GitHub link';
-                                            githubError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            githubError.textContent = '';
-                                        }
+                //                         // // // GitHub
+                //                         if (github.value === '' || !linksRegix.test(github.value)) {
+                //                             github.value === '' ? githubError.textContent  = 'Please Enter Your GitHub'  : githubError.textContent = 'Please Enter a valid GitHub link';
+                //                             githubError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             githubError.textContent = '';
+                //                         }
                             
-                                        // // // Portfolio
-                                        if (portfolio.value === '' || !linksRegix.test(portfolio.value)) {
-                                            portfolio.value === '' ? portfolioError.textContent = 'Please Enter Your Portfolio' : portfolioError.textContent = 'Please Enter a valid Portfolio link';
-                                            portfolioError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            portfolioError.textContent = '';
-                                        }
+                //                         // // // Portfolio
+                //                         if (portfolio.value === '' || !linksRegix.test(portfolio.value)) {
+                //                             portfolio.value === '' ? portfolioError.textContent = 'Please Enter Your Portfolio' : portfolioError.textContent = 'Please Enter a valid Portfolio link';
+                //                             portfolioError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             portfolioError.textContent = '';
+                //                         }
                             
-                    }else if(currentStep == 2){
-                                        // //-----------------------------------[Validate Professional Details Form]-----------------------------
+                //     }else if(currentStep == 2){
+                //                         // //-----------------------------------[Validate Professional Details Form]-----------------------------
                     
-                                        // Job Title
-                                        if (jobTitle.value === '' || !WordsRegix.test(jobTitle.value)) {
-                                            jobTitle.value === '' ? jobTitleError.textContent = 'Please enter your Job Title' : jobTitleError.textContent = 'Please Enter a Valid Title Job!';
-                                            jobTitleError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            jobTitleError.textContent = '';
-                                        }
+                //                         // Job Title
+                //                         if (jobTitle.value === '' || !WordsRegix.test(jobTitle.value)) {
+                //                             jobTitle.value === '' ? jobTitleError.textContent = 'Please enter your Job Title' : jobTitleError.textContent = 'Please Enter a Valid Title Job!';
+                //                             jobTitleError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             jobTitleError.textContent = '';
+                //                         }
                             
-                                        // Profile Summary
-                                        if (profileSummary.value === '' || !SummaryRegix.test(profileSummary.value)) {
-                                            profileSummary.value === '' ? profileSummaryError.textContent = 'Please enter a Profile Summary' : profileSummaryError.textContent = 'Number of caracters shoud be at least 20 and less than 120';
-                                            profileSummaryError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            profileSummaryError.textContent = '';
-                                        }
-                    }else if(currentStep == 3 ){
-                                        // //-----------------------------------[Validate Skills Form]-----------------------------------------
+                //                         // Profile Summary
+                //                         if (profileSummary.value === '' || !SummaryRegix.test(profileSummary.value)) {
+                //                             profileSummary.value === '' ? profileSummaryError.textContent = 'Please enter a Profile Summary' : profileSummaryError.textContent = 'Number of caracters shoud be at least 20 and less than 120';
+                //                             profileSummaryError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             profileSummaryError.textContent = '';
+                //                         }
+                //     }else if(currentStep == 3 ){
+                //                         // //-----------------------------------[Validate Skills Form]-----------------------------------------
                             
-                                        // Technical Skills
-                                        if (technicalSkills.value === '' || !WordsRegix .test(technicalSkills.value)) {
-                                            technicalSkills.value === '' ? technicalSkillsError.textContent = 'Please enter your Hard Skill' : technicalSkillsError.textContent = 'Please Enter a Valid hard Skill';
-                                            technicalSkillsError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            technicalSkillsError.textContent = '';
-                                        }
+                //                         // Technical Skills
+                //                         if (technicalSkills.value === '' || !WordsRegix .test(technicalSkills.value)) {
+                //                             technicalSkills.value === '' ? technicalSkillsError.textContent = 'Please enter your Hard Skill' : technicalSkillsError.textContent = 'Please Enter a Valid hard Skill';
+                //                             technicalSkillsError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             technicalSkillsError.textContent = '';
+                //                         }
                             
-                                        // Soft Skills
-                                        if (softSkills.value === '' || !WordsRegix.test(softSkills.value)) {
-                                            softSkills.value === '' ?  softSkillsError.textContent = 'Please enter your Soft Skill' : softSkillsError.textContent = 'Please Enter a valid soft skill';
-                                            softSkillsError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            softSkillsError.textContent = '';
-                                        }
+                //                         // Soft Skills
+                //                         if (softSkills.value === '' || !WordsRegix.test(softSkills.value)) {
+                //                             softSkills.value === '' ?  softSkillsError.textContent = 'Please enter your Soft Skill' : softSkillsError.textContent = 'Please Enter a valid soft skill';
+                //                             softSkillsError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             softSkillsError.textContent = '';
+                //                         }
         
-                    }else if(currentStep == 4 ){
-                                        // //-----------------------------------[Validate Language Form]----------------------------------------
+                //     }else if(currentStep == 4 ){
+                //                         // //-----------------------------------[Validate Language Form]----------------------------------------
                             
-                                        // Language
-                                        if (language.value === '' || !WordsRegix.test(language.value)) {
-                                            language.value === '' ? languageError.textContent = 'Please enter a Language' : languageError.textContent = 'Please enter a Valid language';
-                                            languageError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            languageError.textContent = '';
-                                        }
-                                        // Language Level
-                                        if (languageLevel.value === '' || !WordsRegix.test(language.value)) {
-                                            languageLevel.value === '' ? languageLevelError.textContent = 'Please enter Language Level' :  languageLevelError.textContent = 'Please Enter a Valid language level';
-                                            languageLevelError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            languageLevelError.textContent = '';
-                                        }
-                    }else if(currentStep == 5 ){
-                                        // //------------------------------------[Validate Hobbies Form]----------------------------------------
+                //                         // Language
+                //                         if (language.value === '' || !WordsRegix.test(language.value)) {
+                //                             language.value === '' ? languageError.textContent = 'Please enter a Language' : languageError.textContent = 'Please enter a Valid language';
+                //                             languageError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             languageError.textContent = '';
+                //                         }
+                //                         // Language Level
+                //                         if (languageLevel.value === '' || !WordsRegix.test(language.value)) {
+                //                             languageLevel.value === '' ? languageLevelError.textContent = 'Please enter Language Level' :  languageLevelError.textContent = 'Please Enter a Valid language level';
+                //                             languageLevelError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             languageLevelError.textContent = '';
+                //                         }
+                //     }else if(currentStep == 5 ){
+                //                         // //------------------------------------[Validate Hobbies Form]----------------------------------------
                             
-                                        // Hobbies
-                                        if (hobbies.value === '' || !WordsRegix.test(hobbies.value)) {
-                                            hobbies.value === '' ? hobbiesError.textContent = 'Please enter your Hobbies' : hobbiesError.textContent = 'Please Enter a Valid Hobby Name';
-                                            hobbiesError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            hobbiesError.textContent = '';
-                                        }
-                    }else if(currentStep == 6){
-                                        // //-------------------------------------[Validate University Background Form]---------------------------
+                //                         // Hobbies
+                //                         if (hobbies.value === '' || !WordsRegix.test(hobbies.value)) {
+                //                             hobbies.value === '' ? hobbiesError.textContent = 'Please enter your Hobbies' : hobbiesError.textContent = 'Please Enter a Valid Hobby Name';
+                //                             hobbiesError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             hobbiesError.textContent = '';
+                //                         }
+                //     }else if(currentStep == 6){
+                //                         // //-------------------------------------[Validate University Background Form]---------------------------
                             
-                                        // Degree
-                                        if (degree.value === '' || !WordsRegix.test(degree.value)) {
-                                            degree.value === '' ? DegreeError.textContent = 'Please enter your Degree' : DegreeError.textContent = 'Please Enter a valid degree Name';
-                                            DegreeError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            DegreeError.textContent = '';
-                                        }
+                //                         // Degree
+                //                         if (degree.value === '' || !WordsRegix.test(degree.value)) {
+                //                             degree.value === '' ? DegreeError.textContent = 'Please enter your Degree' : DegreeError.textContent = 'Please Enter a valid degree Name';
+                //                             DegreeError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             DegreeError.textContent = '';
+                //                         }
                             
-                                        // University
-                                        if (university.value === '' || !WordsRegix.test(university.value)) {
-                                            university.value === '' ? UniversityError.textContent = 'Please enter your University Name' : UniversityError .textContent = 'Please Enter a Valid University Name';
-                                            UniversityError .style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            UniversityError .textContent = '';
-                                        }
+                //                         // University
+                //                         if (university.value === '' || !WordsRegix.test(university.value)) {
+                //                             university.value === '' ? UniversityError.textContent = 'Please enter your University Name' : UniversityError .textContent = 'Please Enter a Valid University Name';
+                //                             UniversityError .style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             UniversityError .textContent = '';
+                //                         }
                             
-                                        // // Year
-                                        if (year.value === '' ) {
-                                            year.value === '' ? yearError.textContent = 'Please enter your Graduation Year' : yearError.textContent = 'Please enter valid Graduation Year';
-                                            yearError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            yearError.textContent = '';
-                                        }
+                //                         // // Year
+                //                         if (year.value === '' ) {
+                //                             year.value === '' ? yearError.textContent = 'Please enter your Graduation Year' : yearError.textContent = 'Please enter valid Graduation Year';
+                //                             yearError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             yearError.textContent = '';
+                //                         }
         
-                    }else if(currentStep == 7){
-                                        // //----------------------------------[Validate Professional Experience Form]-----------------------------
+                //     }else if(currentStep == 7){
+                //                         // //----------------------------------[Validate Professional Experience Form]-----------------------------
                             
-                                        // Job Title (Experience)
-                                        if (job.value === '' || !WordsRegix.test(job.value)) {
-                                            job.value === '' ?  jobError.textContent = 'Please enter Job Title' :  jobError.textContent = 'Please Enter a valid job Title';
-                                            jobError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            jobError.textContent = '';
-                                        }
+                //                         // Job Title (Experience)
+                //                         if (job.value === '' || !WordsRegix.test(job.value)) {
+                //                             job.value === '' ?  jobError.textContent = 'Please enter Job Title' :  jobError.textContent = 'Please Enter a valid job Title';
+                //                             jobError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             jobError.textContent = '';
+                //                         }
                             
-                                        // Company
-                                        if (company.value === '' || !WordsRegix.test(company.value)) {
-                                            company.value === '' ? companyError.textContent = 'Please enter Company Name' : companyError.textContent = 'Please Enter a Valid Company Name';
-                                            companyError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            companyError.textContent = '';
-                                        }
+                //                         // Company
+                //                         if (company.value === '' || !WordsRegix.test(company.value)) {
+                //                             company.value === '' ? companyError.textContent = 'Please enter Company Name' : companyError.textContent = 'Please Enter a Valid Company Name';
+                //                             companyError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             companyError.textContent = '';
+                //                         }
                             
-                                        // Duration
-                                        if (duration.value === '' || !DurationRegix .test(duration.value)) {
-                                            duration.value === '' ? durationrrorE.textContent = 'Please enter Duration' :  durationrrorE.textContent = 'Please Enter a valid duration';
-                                            durationrrorE.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            durationrrorE.textContent = '';
-                                        }
-                    }else {
-                                        // //------------------------------------------------[Validate Certifications Form]------------------------------
+                //                         // Duration
+                //                         if (duration.value === '' || !WordsRegix.test(duration.value)) {
+                //                             duration.value === '' ? durationrrorE.textContent = 'Please enter Duration' :  durationrrorE.textContent 'Please Enter a valid duration';
+                //                             durationrrorE.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             durationrrorE.textContent = '';
+                //                         }
+                //     }else {
+                //                         // //------------------------------------------------[Validate Certifications Form]------------------------------
                             
-                                        // // Certification Name
-                                        if (certificationName.value === '' || !WordsRegix.test(certificationName.value)) {
-                                            certificationName.value === '' ? NomDuLaCertificationError.textContent = 'Please enter Certification Name' : NomDuLaCertificationError.textContent = 'Please Enter valid Certification Name';
-                                            NomDuLaCertificationError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            NomDuLaCertificationError.textContent = '';
-                                        }
+                //                         // // Certification Name
+                //                         if (certificationName.value === '' || !WordsRegix.test(certificationName.value)) {
+                //                             certificationName.value === '' ? NomDuLaCertificationError.textContent = 'Please enter Certification Name' : NomDuLaCertificationError.textContent = 'Please Enter valid Certification Name';
+                //                             NomDuLaCertificationError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             NomDuLaCertificationError.textContent = '';
+                //                         }
                             
-                                        // Certification Link
-                                        if (certificationLink.value === '' || !linksRegix.test(certificationLink.value)) {
-                                            certificationLink.value === '' ? lienduLaCertificationError.textContent = 'Please enter Certification Link' : lienduLaCertificationError.textContent = 'Please enter a valid Certification Link';
-                                            lienduLaCertificationError.style.color = "red";
-                                            valid = false;
-                                        } else {
-                                            lienduLaCertificationError.textContent = '';
-                                        }
-                    }
+                //                         // Certification Link
+                //                         if (certificationLink.value === '' || !linksRegix.test(certificationLink.value)) {
+                //                             certificationLink.value === '' ? lienduLaCertificationError.textContent = 'Please enter Certification Link' : lienduLaCertificationError.textContent = 'Please enter a valid Certification Link';
+                //                             lienduLaCertificationError.style.color = "red";
+                //                             valid = false;
+                //                         } else {
+                //                             lienduLaCertificationError.textContent = '';
+                //                         }
+                //     }
         
                     // If form is valid, increment step and show the next step
                     if (valid) {
@@ -900,72 +900,32 @@
 
 //------------------------------------[download cv as pdf part begins using jquery]------------------------------------------------------
 
-        // function generatePDF() {
-        //     var pdf = new jsPDF('l', 'pt', 'a4');//sets the orientation and measurement and paper size 
-        //     pdf.addHTML($("#downloadCv"), -1, -1, function () {
-        //     pdf.save('cv.pdf');
-        // });
-        
-        // }
+btndwlond = document.getElementById('download-pdf');
+download = document.getElementById('downloadCv');
 
-        function generatePDF() {
-            const { jsPDF } = window.jspdf;  
-            const pdf = new jsPDF('l', 'pt', 'a4');
-        
-            const content = document.getElementById('downloadCv'); 
-        
-       
-            pdf.html(content, {
-              callback: function (doc) {
-                doc.save('cv.pdf');  
-              },
-              x: 10,  
-              y: 10,  
-              width: 500,  
-            });
+ function generatePDF(){
+            btndwlond.addEventListener("click", async function () {
+
+                const filename = "cv.pdf";
+              
+                const options = {
+                  margin: 0,
+                  filename: filename,
+                  image: { type: "jpeg", quality: 0.98 },
+                  html2canvas: { scale: 2 },
+                  jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+                };
+                try {
+                  await html2pdf().set(options).from(down).save();
+                } catch (error) {
+                  console.error("false:", error.message);
+                }
+              });
           }
 
           
         
 
-//download as pdf notes 
-/* | jsPDF adds new object with following parameters 'p'(orientation) -> portrait , 'pt' -> points(measurement) , 'a4' -> paper size 
-|  | addhtml add html contant to pdf 
-|  | 0 , 0 are coordiantes 
-|  la protectuon contre crsf => attach that allows the attackers that are authorised to do unallow actions on browsers or set web (session /cookies -> i can access it /local storage-> i can not access it)
-|  la functional
-   ----------------------------
-   const {jspdf} = window.jspdf
-   const doc = new jspdf();
-   const input = $('input1').value
-   doc.setFont('arial');
-   doc.setFontize(18);
-   doc.stTextcolor(20,50,80);
-   doc.text("kkfdllfd"100 , 20)
-
-   doc.save('cv.pdf')
-  -----------------------------
-|let input = document.queryselector(".photo").files[0];
- 
-|attribute selector
-|
 
 
 
-
-
-
-
-}
-
-toggleError(list,field,message =""){
-  
-}
-
-start-up that we do not need to 
-ux formation 
-it rood
-cjdm
-
-
-| */
