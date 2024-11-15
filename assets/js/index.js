@@ -1,3 +1,4 @@
+
    let step8 = document.getElementById('step8');
    const downloadStep = document.querySelector('.download-step');
    let NextStep8 = document.getElementById('next-step8');
@@ -54,7 +55,12 @@
    //--------------------------- [variables related to dynamic form]-------------------------------------- 
    let addHardSkills = document.getElementById('add-hard-skill');
    let addSoftSkills = document.getElementById('add-soft-skill');
-   //------------------------- [regular expression for personal information validation]--------------------
+   let addLanguage = document.getElementById('add-language');
+   let hobbyContainer = document.getElementById('hobbycontainer');
+   let cursusUniversitaire = document.getElementById('cursusUniversitaire');
+   let professionalExperience = document.getElementById('professional-experience');
+   let certificationId = document.getElementById('certification-id');
+   //------------------------- [regular expression for form validation]--------------------
 
    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
    const phoneRegix = /^0\d{9}$/;
@@ -64,36 +70,11 @@
 
 
 
-//-----------------------------------[the part that is related to first page which allows the user to choose which template he prefers]------------------------    
-        let selectedTemplateId = null; // Declare this at the top to persist across functions
-
-        // Function to highlight selected template
-        function selectTemplate(templateId) {
-            // Remove selection from any previous template
-            if (selectedTemplateId) {
-                document.getElementById(selectedTemplateId).classList.remove('selected');
-            }
-
-            // Highlight the new selected template
-            selectedTemplateId = templateId; // Set the selected template ID
-            document.getElementById(selectedTemplateId).classList.add('selected');
-        }
-
-        // Function to proceed to the next page
-        function nextPage() {
-            if (selectedTemplateId) {
-                // Redirect to the next page.
-                alert('You have selected ' + selectedTemplateId + '. Proceeding to the next step.');
-                window.location.href = "fillInInformations.html";
-                alert(selectedTemplateId)
-            } else {
-                alert("Please select a template first.");
-            }
-        }
-
 //----------------------------------------------[functions of dynamic form ]-----------------------------------------------------------
-      //hard skill dynamic form function
-        function addHardSkill(){
+      // dynamic form function
+        function addDynamicForm(valeur){
+        //hard skills dynamic form
+           if(valeur == 1){
             let hardSkill = document.createElement('input');
             hardSkill.type = "text";
             hardSkill.id = "hard-skills";
@@ -118,13 +99,9 @@
             container.appendChild(hardSkill);
             container.appendChild(deletebtn);
             addHardSkills.appendChild(container);
-           
-            updateSkillInfo(1);
-        
-        }
-
-      //soft skill dynamic form function
-        function addSoftSkill(){
+            updateInfo(valeur);
+        //soft skill dynamic form
+           }else if(valeur == 2){
             let softSkillInput = document.createElement('input');
             softSkillInput.type = "text";
             softSkillInput.name = "soft-skills";
@@ -152,41 +129,314 @@
             container.appendChild(softSkillInput);
             container.appendChild(softskillsbtn);
             addSoftSkills.appendChild(container);
+            updateInfo(valeur);
+        //language dynamic form
+           }else if(valeur == 3){
+             let languageInput = document.createElement('input');
+                 languageInput.type= "text";
+                 languageInput.id = "language";
+                 languageInput.placeholder = "New Language";
+                 languageInput.classList.add("languageValue" , "w-full" ,  "px-3" , "py-2" , "border" , "border-gray-300" , "rounded-md" , "focus:outline-none" , "focus:ring-indigo-500" , "focus:border-indigo-500" , "sm:text-sm");
+            let languageLevel = document.createElement('input');
+                 languageLevel.type= "text";
+                 languageLevel.id = "level";
+                 languageLevel.placeholder = "Niveau (ex: Intermédiaire)";
+                 languageLevel.classList.add("languageLevel" , "w-full" , "px-3" , "py-2" , "border" , "border-gray-300" , "rounded-md" , "focus:outline-none" , "focus:ring-indigo-500" , "focus:border-indigo-500" , "sm:text-sm");
+            let languageDeleteBtn = document.createElement('button');
+                languageDeleteBtn.type = "button";
+                languageDeleteBtn.classList.add("px-4" ,"h-10px", "w-10px" , "py-2" , "bg-red-500" ,  "text-sky-600" , "rounded-md" , "hover:bg-green-200" , "focus:outline-none");
+                languageDeleteBtn.innerHTML =`
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                `;
 
-            updateSkillInfo(2);
+            let languagecontainer = document.createElement('div');
+                languagecontainer.classList.add("flex","center-items");
 
+            languageDeleteBtn.addEventListener('click',() =>{
+                languageInput.remove();
+                languageLevel.remove();
+                languageDeleteBtn.remove();
+            });
+
+            languagecontainer.appendChild(languageInput);
+            languagecontainer.appendChild(languageLevel);
+            languagecontainer.appendChild(languageDeleteBtn);
+
+            addLanguage.appendChild(languagecontainer);
+
+
+            updateInfo(valeur);
+        //hobbies dynamic form
+           }else if(valeur == 4){
+            let hobbyinput = document.createElement('input');
+            hobbyinput.type = "text";
+            hobbyinput.id = "hobby";
+            hobbyinput.placeholder = "New Hobby";
+            hobbyinput.name = "hobbies";
+            hobbyinput.classList.add("hobbyclass" , "w-full" , "px-3" , "py-2" , "border" , "border-gray-300" , "rounded-md" , "focus:outline-none" , "focus:ring-indigo-500" , "focus:border-indigo-500" , "sm:text-sm");
+            let deletebtn = document.createElement('button');
+            deletebtn.id = "deleteBtn";
+            deletebtn.classList.add("px-4" ,"h-10px", "w-10px" , "py-2" , "bg-red-500" ,  "text-sky-600" , "rounded-md" , "hover:bg-green-200" , "focus:outline-none");
+
+            deletebtn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            `;
+
+            deletebtn.addEventListener('click',() => {
+                container.remove();
+            });
+            let container = document.createElement('div');
+            container.classList.add("flex","center-items");
+            container.appendChild(hobbyinput);
+            container.appendChild(deletebtn);
+            hobbyContainer.appendChild(container);
+            updateInfo(valeur);
+        // degree and university dynamic form
+           }else if(valeur == 5){
+            let degreeInput = document.createElement('input');
+            degreeInput.type = "text";
+            degreeInput.id = "degree";
+            degreeInput.placeholder = "New degree";
+            degreeInput.name = "degree";
+            degreeInput.classList.add("degree" , "w-full" , "px-3" , "py-2" , "border" , "border-gray-300" , "rounded-md" , "focus:outline-none" , "focus:ring-indigo-500" , "focus:border-indigo-500" , "sm:text-sm");
+            let universityInput = document.createElement('input');
+            universityInput.type = "text";
+            universityInput.id = "university";
+            universityInput.placeholder = "New University";
+            universityInput.name = "university";
+            universityInput.classList.add("university" , "w-full" , "px-3" , "py-2" , "border" , "border-gray-300" , "rounded-md" , "focus:outline-none" , "focus:ring-indigo-500" , "focus:border-indigo-500" , "sm:text-sm");
+            let yearinput = document.createElement('input');
+            yearinput.type = "text";
+            yearinput.id = "year";
+            yearinput.placeholder = "New year";
+            yearinput.name = "year";
+            yearinput.classList.add("year" , "w-full" , "px-3" , "py-2" , "border" , "border-gray-300" , "rounded-md" , "focus:outline-none" , "focus:ring-indigo-500" , "focus:border-indigo-500" , "sm:text-sm");
+            let deletebtn = document.createElement('button');
+            deletebtn.id = "deleteBtn";
+            deletebtn.classList.add("px-4" ,"h-10px", "w-10px" , "py-2" , "bg-red-500" ,  "text-sky-600" , "rounded-md" , "hover:bg-green-200" , "focus:outline-none");
+
+            deletebtn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            `;
+
+            deletebtn.addEventListener('click',() => {
+                container.remove();
+            });
+            let container = document.createElement('div');
+           
+            container.appendChild(degreeInput);
+            container.appendChild(universityInput);
+            container.appendChild(yearinput);
+            container.appendChild(deletebtn);
+            cursusUniversitaire.appendChild(container);
+
+
+
+            updateInfo(valeur);
+        //job info dynamic form
+           }else if(valeur == 6){
+            let jobTitle = document.createElement('input');
+            jobTitle.type = "text";
+            jobTitle.id = "job-title";
+            jobTitle.placeholder = "New job title";
+            jobTitle.name = "job title";
+            jobTitle.classList.add("job-title" , "w-full" , "px-3" , "py-2" , "border" , "border-gray-300" , "rounded-md" , "focus:outline-none" , "focus:ring-indigo-500" , "focus:border-indigo-500" , "sm:text-sm");
+            let company = document.createElement('input');
+            company.type = "text";
+            company.id = "company";
+            company.placeholder = "New company";
+            company.name = "company";
+            company.classList.add("company" , "w-full" , "px-3" , "py-2" , "border" , "border-gray-300" , "rounded-md" , "focus:outline-none" , "focus:ring-indigo-500" , "focus:border-indigo-500" , "sm:text-sm");
+            let durationt = document.createElement('input');
+            durationt.type = "text";
+            durationt.id = "duration";
+            durationt.placeholder = "New duration";
+            durationt.name = "duration";
+            durationt.classList.add("duration" , "w-full" , "px-3" , "py-2" , "border" , "border-gray-300" , "rounded-md" , "focus:outline-none" , "focus:ring-indigo-500" , "focus:border-indigo-500" , "sm:text-sm");
+            let deletebtn = document.createElement('button');
+            deletebtn.id = "deleteBtn";
+            deletebtn.classList.add("px-4" ,"h-10px", "w-10px" , "py-2" , "bg-red-500" ,  "text-sky-600" , "rounded-md" , "hover:bg-green-200" , "focus:outline-none");
+
+            deletebtn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            `;
+
+            deletebtn.addEventListener('click',() => {
+                container.remove();
+            });
+            let container = document.createElement('div');
+           
+            container.appendChild(jobTitle);
+            container.appendChild(company);
+            container.appendChild(durationt);
+            container.appendChild(deletebtn);
+            professionalExperience.appendChild(container);
+
+            updateInfo(valeur);
+        // certifications dynamic form
+           }else{
+
+            let certifcationName = document.createElement('input');
+            certifcationName.type = "text";
+            certifcationName.id = "name";
+            certifcationName.placeholder = "New Certification Name";
+            certifcationName.name = "certification";
+            certifcationName.classList.add("certification-name" , "w-full" , "px-3" , "py-2" , "border" , "border-gray-300" , "rounded-md" , "focus:outline-none" , "focus:ring-indigo-500" , "focus:border-indigo-500" , "sm:text-sm");
+            let certificationLink = document.createElement('input');
+            certificationLink.type = "link";
+            certificationLink.id = "certificationLink";
+            certificationLink.placeholder = "New certificationLink";
+            certificationLink.name = "link";
+            certificationLink.classList.add("certification-link" , "w-full" , "px-3" , "py-2" , "border" , "border-gray-300" , "rounded-md" , "focus:outline-none" , "focus:ring-indigo-500" , "focus:border-indigo-500" , "sm:text-sm");
+            let deletebtn = document.createElement('button');
+            deletebtn.id = "deleteBtn";
+            deletebtn.classList.add("px-4" ,"h-10px", "w-10px" , "py-2" , "bg-red-500" ,  "text-sky-600" , "rounded-md" , "hover:bg-green-200" , "focus:outline-none");
+
+            deletebtn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            `;
+
+            deletebtn.addEventListener('click',() => {
+                container.remove();
+            });
+            let container = document.createElement('div');
+           
+            container.appendChild(certifcationName);
+            container.appendChild(certificationLink);
+            container.appendChild(deletebtn);
+            certificationId.appendChild(container);
+
+            updateInfo(valeur);
+           }
+           
+        
         }
+
 //----------------------[the part that is related to all functionalities of the pages from the first one till last one] ------------------
 
+        let formData = {
+            addedHardSkill: [],
+            addedSoftSkill: [],
+            addedLanguages: [],
+            addedHobbies: [],
+            addedEducation: [],
+            addedJobExperience: [],
+            addedCertifications: []
+        };
 
-
-        let addSkillInfo = {addedHardSkill : [],addedSoftSkill :[]}
-
-        function updateSkillInfo(valeur){
+        function updateInfo(valeur){
             if(valeur == 1){
                 const  addedHardSkillInputs = document.querySelectorAll('.hardskillclass');
-                addSkillInfo.addedHardSkill = []; 
+                formData.addedHardSkill = []; 
         
                 addedHardSkillInputs.forEach((input) => {
                     if (input.value) {
-                        addSkillInfo.addedHardSkill.push(input.value);  
+                        formData.addedHardSkill.push(input.value);  
                     }
                 });
-          
+
             }else if(valeur == 2){
                 const addedSoftSkillinputs = document.querySelectorAll('.softskillclass'); 
-                addSkillInfo.addedSoftSkill = []; 
+                formData.addedSoftSkill = []; 
                 addedSoftSkillinputs.forEach((input) => {
                        if(input.value){
-                        addSkillInfo.addedSoftSkill.push(input.value);
+                        formData.addedSoftSkill.push(input.value);
                        }
                 });
-            }
+            }else if(valeur == 3){
+              
+                const languageInputs = document.querySelectorAll('.languageValue');
+                const levelInputs = document.querySelectorAll('.languageLevel');
+                formData.addedLanguages = []; 
+            
+                if (languageInputs.length === levelInputs.length) {
+                    languageInputs.forEach((input, index) => {
+                        const language = input.value;
+                        const level = levelInputs[index].value;
+            
+                        if (language && level) {
+                            formData.addedLanguages.push({ language, level });
+                        }
+                 });
+                }
+
+            }else if(valeur == 4){
+                const hobbiesinputs = document.querySelectorAll('.hobbyclass');
+                addhobby.addhobbies = [];
+                hobbiesinputs.forEach((input) => {
+                      if(input.value){
+                        formData.addedHobbies.push(input.value);
+                      }
+                });
+            }else if(valeur == 5){
+                const degreeInputs = document.querySelectorAll('.degree');
+                const universityInputs = document.querySelectorAll('.university');
+                const yearInputs = document.querySelectorAll('.year');
+                formData.addedEducation = []; // Clear previous data
+            
+                if (degreeInputs.length === universityInputs.length && degreeInputs.length === yearInputs.length) {
+                    degreeInputs.forEach((degreeInput, index) => {
+                        const degree = degreeInput.value;
+                        const university = universityInputs[index].value;
+                        const year = yearInputs[index].value;
+            
+                        // Only add valid data
+                        if (degree && university && year) {
+                            formData.addedEducation.push({ degree, university, year });
+                        }
+                    });
+                }
+                console.log(formData.addedEducation)
+            }else if(valeur == 6){
+                const jobTitleInputs = document.querySelectorAll('.job-title');
+                const companyInputs = document.querySelectorAll('.company');
+                const durationInputs = document.querySelectorAll('.duration');
+                formData.addedJobExperience = []; // Clear previous data
+            
+            
+                if (jobTitleInputs.length === companyInputs.length && jobTitleInputs.length === durationInputs.length) {
+                    jobTitleInputs.forEach((jobTitleInput, index) => {
+                        const jobTitle = jobTitleInput.value;
+                        const company = companyInputs[index].value;
+                        const duration = durationInputs[index].value;
+            
+                        // Only add valid data
+                        if (jobTitle && company && duration) {
+                            formData.addedJobExperience.push({ jobTitle, company, duration });
+                        }
+                    });
+                }
+            }else{
+                const certificationNameInputs = document.querySelectorAll('.certification-name');
+                const certificationLinkInputs = document.querySelectorAll('.certification-link');
+                formData.addedCertifications = []; // Clear previous data
+            
+                if (certificationNameInputs.length === certificationLinkInputs.length) {
+                    certificationNameInputs.forEach((certificationNameInput, index) => {
+                        const certificationName = certificationNameInput.value;
+                        const certificationLink = certificationLinkInputs[index].value;
+            
+                
+                        if (certificationName && certificationLink) {
+                            formData.addedCertifications.push({ certificationName, certificationLink });
+                        }
+                    });
+                }
          
 
         }
         
-
+    }
         let currentStep = 1;
         const totalSteps = 8;
 
@@ -511,12 +761,11 @@
                 const level = entry.querySelector('input[name="level"]').value;
                 if (language && level) languagesInfo.push({ language, level });
             });
-
-            const hobbiesInfo = [];
-            document.querySelectorAll('.hobby-entry').forEach(entry => {
-                const hobby = entry.querySelector('input[name="hobby"]').value;
-                if (hobby) hobbiesInfo.push(hobby);
-            });
+            const hobbiesInfo = {
+                hobby: document.getElementById('hobbies').value,
+                
+            };
+            console.log(hobbiesInfo.hobby)
 
             const educationInfo = [];
             document.querySelectorAll('.education-entry').forEach(entry => {
@@ -525,6 +774,7 @@
                 const year = entry.querySelector('input[name="year"]').value;
                 if (degree && university && year) educationInfo.push({ degree, university, year });
             });
+            console.log(educationInfo)
 
             const workExperienceInfo = [];
             document.querySelectorAll('.work-entry').forEach(entry => {
@@ -541,191 +791,153 @@
                 if (certificationName && certificationLink) certificationsInfo.push({ certificationName, certificationLink });
             });
 
-            // Create the classic CV content
-             const classicCvContent = `
-                 <!-- Main Container -->
-                <div id="downloadCv" class="max-w-screen-lg mx-auto bg-white p-8 rounded-lg shadow-xl space-y-8">
-                    <!-- Header Section -->
-                    <div class="text-center mb-12">
-                        <h1 class="text-4xl font-bold text-indigo-600 hover:text-indigo-800 transition duration-300">${personalInfo.name}</h1>
-                        <p class="text-lg text-gray-600">${professionalInfo.jobTitle}</p>
-                    </div>
-                    <hr class="border-t-2 border-gray-300">
 
-                    <!-- Personal Info Section -->
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-semibold text-green-600 mb-4">Personal Information</h2>
-                        <ul class="list-none space-y-2 text-gray-700">
-                            <li><i class="fas fa-envelope text-gray-500"></i> <strong>Email:</strong> ${personalInfo.email}</li>
-                            <li><i class="fas fa-phone-alt text-gray-500"></i> <strong>Phone:</strong> ${personalInfo.phone}</li>
-                            <li><i class="fas fa-map-marker-alt text-gray-500"></i> <strong>Address:</strong> ${personalInfo.address}</li>
-                            <li><i class="fab fa-linkedin text-blue-600"></i> <strong>LinkedIn:</strong> <a href="${personalInfo.linkedin}" target="_blank" class="hover:text-blue-800 transition duration-300">${personalInfo.linkedin}</a></li>
-                            <li><i class="fab fa-github text-gray-700"></i> <strong>GitHub:</strong> <a href="${personalInfo.github}" target="_blank" class="hover:text-gray-900 transition duration-300">${personalInfo.github}</a></li>
-                            <li><i class="fas fa-laptop-code text-gray-700"></i> <strong>Portfolio:</strong> <a href="${personalInfo.portfolio}" target="_blank" class="hover:text-gray-900 transition duration-300">${personalInfo.portfolio}</a></li>
-                        </ul>
-                    </section>
-
-                    <hr class="border-t-2 border-gray-300">
-
-                    <!-- Professional Details Section -->
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Professional Details</h2>
-                        <p><strong>Position:</strong> ${professionalInfo.jobTitle}</p>
-                        <p><strong>Profile Summary:</strong><br> ${professionalInfo.profileSummary}</p>
-                    </section>
-
-                    <hr class="border-t-2 border-gray-300">
-
-                    <!-- Skills Section -->
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Skills</h2>
-                        <div class="space-y-2 text-gray-700">
-                            <p><strong>Technical Skills:</strong> ${skillsInfo.technicalSkills}</p>
-                            <p><strong>Soft Skills:</strong> ${skillsInfo.softSkills}</p>
-                        </div>
-                    </section>
-
-                    <hr class="border-t-2 border-gray-300">
-
-                    <!-- Languages Section -->
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Languages</h2>
-                        <ul class="space-y-2 text-gray-700">
-                            ${languagesInfo.map(lang => `<li><strong>${lang.language}</strong> - ${lang.level}</li>`).join('')}
-                        </ul>
-                    </section>
-
-                    <hr class="border-t-2 border-gray-300">
-
-                    <!-- Loisirs (Hobbies) Section -->
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Hobbies</h2>
-                        <ul class="space-y-2 text-gray-700">
-                            ${hobbiesInfo.map(hobby => `<li>${hobby}</li>`).join('')}
-                        </ul>
-                    </section>
-
-                    <hr class="border-t-2 border-gray-300">
-
-                    <!-- Education Section -->
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Education</h2>
-                        <ul class="space-y-2 text-gray-700">
-                            ${educationInfo.map(edu => `<li><strong>${edu.degree}</strong> - ${edu.university} (${edu.year})</li>`).join('')}
-                        </ul>
-                    </section>
-
-                    <hr class="border-t-2 border-gray-300">
-
-                    <!-- Work Experience Section -->
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Work Experience</h2>
-                        <div class="space-y-4">
-                            ${workExperienceInfo.map(exp => `
-                                <div class="border-l-4 border-indigo-500 pl-4">
-                                    <h3 class="text-xl font-semibold text-gray-800">${exp.jobTitle}</h3>
-                                    <p><strong>Company:</strong> ${exp.company}</p>
-                                    <p><strong>Duration:</strong> ${exp.duration}</p>
+            const CvContent = `
+             
+                <main id="downloadCv" class="font-jost hyphens-manual">
+                    <section class="p-6 mx-auto w-full max-w-4xl  ">
+                        <div class="flex">
+                            <!-- Left Column (Personal Information) -->
+                            <div class="w-1/3 bg-gradient-to-l from-neutral-500 to-gray-300 p-6 border-r border-gray-300">
+                                <!-- Profile Picture -->
+                                <div class="flex justify-center mb-6">
+                                    <img src="${personalInfo.photo}" alt="Profile" class="rounded-full w-32 h-32 object-cover border-4 border-gray-300 shadow-lg">
                                 </div>
-                            `).join('')}
+
+                                <!-- Personal Information -->
+                                <section>
+                                    <h1 class="text-3xl font-bold text-gray-800 mb-2">${personalInfo.name}</h1>
+                                    <h2 class="text-xl text-gray-600 mb-4">${professionalInfo.jobTitle}</h2>
+                                    <address class="text-lg text-gray-500 mb-4">${personalInfo.address}</address>
+                                </section>
+
+                                <!-- Contact Information -->
+                                <section class="text-gray-600">
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center mb-2"><img src="https://img.icons8.com/ios-filled/24/000000/portfolio.png" class="mr-2"> <a href="${personalInfo.portfolio}" class="text-blue-500 hover:underline">Portfolio: ${personalInfo.portfolio}</a></li>
+                                        <li class="flex items-center mb-2"><img src="https://img.icons8.com/ios-filled/24/000000/github.png" class="mr-2"> <a href="${personalInfo.github}" class="text-blue-500 hover:underline">GitHub: ${personalInfo.github}</a></li>
+                                        <li class="flex items-center mb-2"><img src="https://img.icons8.com/ios-filled/24/000000/linkedin.png" class="mr-2"> <a href="${personalInfo.linkedin}" class="text-blue-500 hover:underline">LinkedIn: ${personalInfo.linkedin}</a></li>
+                                        <li class="flex items-center mb-2"><img src="https://img.icons8.com/ios-filled/24/000000/email.png" class="mr-2"> <a href="mailto:${personalInfo.email}" class="text-blue-500 hover:underline">Email: ${personalInfo.email}</a></li>
+                                        <li class="flex items-center"><img src="https://img.icons8.com/ios-filled/24/000000/phone.png" class="mr-2"> <a href="tel:+${personalInfo.phone}" class="text-blue-500 hover:underline">Phone: ${personalInfo.phone}</a></li>
+                                    </ul>
+                                </section>
+                            </div>
+
+                            <!-- Right Column (Other Information) -->
+                            <div class="w-2/3 p-6 bg-gradient-to-b from-gray-50 to-gray-100">
+                                <!-- Profile Summary -->
+                                <section class="mb-6">
+                                    <h2 class="text-3xl font-semibold text-gray-800 mb-2">Summary</h2>
+                                    <p class="text-gray-600">${professionalInfo.profileSummary}</p>
+                                </section>
+                                <hr class="border-gray-300">
+                                
+                                <!-- Skills -->
+                                <section class="mb-6">
+                                    <h2 class="text-3xl font-semibold text-gray-800 mb-2">Skills</h2>
+                                    <h3 class="text-2xl font-semibold text-gray-700 mt-2">Technical Skills:</h3>
+                                    <p class="text-gray-600">🔹${skillsInfo.technicalSkills}</p>
+                                    <ul class="list-inside text-gray-600 ml-0 list-none p-0">${formData.addedHardSkill.map(skill => `<li>🔹${skill}</li>`).join('')}</ul>
+                                    <h3 class="text-2xl font-semibold text-gray-700 mt-4">Soft Skills:</h3>
+                                    <p class="text-gray-600">🔹${skillsInfo.softSkills}</p>
+                                    <ul class="list-none p-0 list-inside text-gray-600 ml-0">${formData.addedSoftSkill.map(skill => `<li>🔹${skill}</li>`).join('')}</ul>
+                                </section>
+                                <hr class="border-gray-300">
+                                
+                                <!-- Languages -->
+                                <section class="mb-6">
+                                    <h2 class="text-3xl font-semibold text-gray-800 mb-2">Languages</h2>
+                                    <ul class="list-none p-0 list-inside text-gray-600 ml-0">${languagesInfo.map(lang => `<li>🔹${lang.language} - ${lang.level}</li>`).join('')}</ul>
+                                    <ul class="list-none p-0 list-inside text-gray-600 ml-0">${formData.addedLanguages.map(lang => `<li>🔹${lang.language} - ${lang.level}</li>`).join('')}</ul>
+                                </section>
+                                <hr class="border-gray-300">
+                                
+                                <!-- Education -->
+                                <section class="mb-6">
+                                    <h2 class="text-3xl font-semibold text-gray-800 mb-2">Education</h2>
+                                    <ul class="list-none p-0 list-inside text-gray-600 ml-0">${educationInfo.map(ed => `<li>🔹${ed.degree} from ${ed.university} (${ed.year})</li>`).join('')}</ul>
+                                    <ul class="list-none p-0 list-inside text-gray-600 ml-0">${formData.addedEducation.map(ed => `<li>🔹${ed.degree} from ${ed.university} (${ed.year})</li>`).join('')}</ul>
+                                </section>
+                                <hr class="border-gray-300">
+                                
+                                <!-- Work Experience -->
+                                <section class="mb-6">
+                                    <h2 class="text-3xl font-semibold text-gray-800 mb-2">Work Experience</h2>
+                                    <ul class="list-none p-0 list-inside text-gray-600 ml-0">${workExperienceInfo.map(work => `<li>🔹${work.jobTitle} at ${work.company} (${work.duration})</li>`).join('')}</ul>
+                                    <ul class="list-none p-0 list-inside text-gray-600 ml-0">${formData.addedJobExperience.map(work => `<li>🔹${work.jobTitle} at ${work.company} (${work.duration})</li>`).join('')}</ul>
+                                </section>
+                                <hr class="border-gray-300">
+                                
+                                <!-- Certifications -->
+                                <section>
+                                    <h2 class="text-3xl font-semibold text-gray-800 mb-2">Certifications</h2>
+                                    <ul class="list-none p-0 list-inside text-gray-600 ml-0">${certificationsInfo.map(cert => `<li>🔹${cert.certificationName} - <a href="${cert.certificationLink}" class="text-blue-500 hover:underline" target="_blank">${cert.certificationLink}</a></li>`).join('')}</ul>
+                                    <ul class="list-none p-0 list-inside text-gray-600 ml-0">${formData.addedCertifications.map(cert => `<li>🔹${cert.certificationName} - <a href="${cert.certificationLink}" class="text-blue-500 hover:underline" target="_blank">${cert.certificationLink}</a></li>`).join('')}</ul>
+                                </section>
+                            </div>
                         </div>
                     </section>
+                </main>
 
-                    <hr class="border-t-2 border-gray-300">
-
-                    <!-- Certifications Section -->
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Certifications</h2>
-                        <ul class="space-y-2 text-gray-700">
-                            ${certificationsInfo.map(cert => `
-                                <li>
-                                    <strong>${cert.certificationName}</strong> - 
-                                    <a href="${cert.certificationLink}" target="_blank" class="text-blue-600 hover:text-blue-800 transition duration-300">${cert.certificationLink}</a>
-                                </li>
-                            `).join('')}
-                        </ul>
-                    </section>
-
-                </div>
-
-                    `;
-
-            // create modern cv content
-            const modernCvContent = `
-                        <!-- Main Container -->
-                <div id="downloadCv"  class="max-w-screen-xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-                    <div class="flex">
-                        <div class="w-1/4 bg-stone-600 text-white p-6 rounded-l-lg">
-                          <div class="flex justify-center mb-6">
-                           <img id="profile-photo" src="" alt="Profile Photo" class="rounded-full w-32 h-32 border-4 border-white">
-                          </div
-                            <h2 class="text-2xl font-semibold mb-2">${personalInfo.name}</h2>
-                            <p class="text-sm mb-2">${professionalInfo.jobTitle}</p>
-                            <p class="text-sm">Email: ${personalInfo.email}</p>
-                            <p class="text-sm">Phone: ${personalInfo.phone}</p>
-                            <p class="text-sm">Address: ${personalInfo.address}</p>
-                            <p class="text-sm"><a href="${personalInfo.linkedin}" class="text-blue-400">LinkedIn</a></p>
-                            <p class="text-sm"><a href="${personalInfo.github}" class="text-blue-400">GitHub</a></p>
-                            <p class="text-sm"><a href="${personalInfo.portfolio}" class="text-blue-400">Portfolio</a></p>
-                        </div>
-                        <div class="w-3/4 bg-gray-100 p-6 rounded-r-lg">
-                            <h3 class="text-2xl font-semibold mb-4">Profile Summary</h3>
-                            <p>${professionalInfo.profileSummary}</p>
-                            <h3 class="text-2xl font-semibold mt-8 mb-4">Skills</h3>
-                            <p><strong>Technical Skills:</strong></p>
-                            <ul class="flex flex-wrap gap-2 mt-2">
-                            <li>${skillsInfo.technicalSkills}</li>
-                            ${addSkillInfo.addedHardSkill.map(skill => `
-                                <li>${skill}</li>
-                            `).join('')}
-                            </ul>
-                            <p><strong>Soft Skills:</strong></p>
-                             ${skillsInfo.softSkills} ${addSkillInfo.addedSoftSkill.join(' ')}</p>
-                            <h3 class="text-2xl font-semibold mt-8 mb-4">Languages</h3>
-                            ${languagesInfo.map(lang => `<p>${lang.language} - ${lang.level}</p>`).join('')}
-                            <h3 class="text-2xl font-semibold mt-8 mb-4">Work Experience</h3>
-                            ${workExperienceInfo.map(exp => `<p>${exp.jobTitle} at ${exp.company} (${exp.duration})</p>`).join('')}
-                            <h3 class="text-2xl font-semibold mt-8 mb-4">Education</h3>
-                            ${educationInfo.map(edu => `<p>${edu.degree} - ${edu.university} (${edu.year})</p>`).join('')}
-                            <h3 class="text-2xl font-semibold mt-8 mb-4">Certifications</h3>
-                            ${certificationsInfo.map(cert => `<p>${cert.certificationName} - <a href="${cert.certificationLink}" target="_blank">${cert.certificationLink}</a></p>`).join('')}
-                        </div>
-                    </div>
-                </div>        
-            
             `;
 
             // Display the CV content in the last step
             downloadStep.innerHTML = `
 
-            ${modernCvContent}
-
-                <div class="flex justify-center mt-8">
-                 <button id="download-pdf" class="px-6 py-3 bg-indigo-600 text-white rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300" onclick="generatePDF()">Download CV as PDF</button>
-                </div>
+            ${CvContent}
+            <div class="flex justify-center mt-8">
+                <button id="download-pdf" class="inline-block bg-gradient-to-r from-lime-500 to-green-500 text-slate-950 py-3 px-8 rounded-lg text-lg font-semibold border-animation hover:bg-gradient-to-l hover:from-cyan-500 hover:to-purple-500 transition duration-300 transform hover:scale-105">Download as PDF</button>
+            </div>
 
                `;
             // Show the download step
              downloadStep.classList.remove('hidden');
              stepper.classList.add('hidden');
              step8.classList.add('hidden');
-             document.getElementById('main-wrapper').classList.add('hidden');            
+             document.getElementById('main-wrapper').classList.add('hidden'); 
+             
+             document.addEventListener("DOMContentLoaded", function () {
+                let DownloadBtn = document.getElementById('download-pdf');
+                let downloadCv = document.getElementById('downloadCv');
+              
+                if (DownloadBtn && downloadCv) {  
+                  DownloadBtn.addEventListener("click", async function () {
+                    const filename = "cv.pdf";
+                    const options = {
+                      margin: 0,
+                      filename: filename,
+                      image: { type: "jpeg", quality: 0.98 },
+                      html2canvas: { scale: 2 },
+                      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+                    };
+                    try {
+                      await html2pdf().set(options).from(downloadCv).save(filename);
+                    } catch (error) {
+                      console.error("Error:", error.message);
+                    }
+                  });
+                } else {
+                  console.log("Elements not found");
+                }
+              });
         }
+        
 
 
   
 
 //------------------------------------[download cv as pdf part begins using jquery]------------------------------------------------------
 
-        function generatePDF() {
-            var pdf = new jsPDF('l', 'pt', 'a4');//sets the orientation and measurement and paper size 
-            $("#download-pdf").attr('hidden', 'true') //hide button just for decoration purposes
-            pdf.addHTML($("#downloadCv"), -1, -1, function () {
-            pdf.save('cv.pdf');
-            $("#download-pdf").removeAttr('hidden', 'true')//show the button after hiding it
-        });
+        // function generatePDF() {
+        //     var pdf = new jsPDF('l', 'pt', 'a4');//sets the orientation and measurement and paper size 
+        //     pdf.addHTML($("#downloadCv"), -1, -1, function () {
+        //     pdf.save('cv.pdf');
+        // });
         
-        }
+        // }
+
+          
+        
 
 //download as pdf notes 
 /* | jsPDF adds new object with following parameters 'p'(orientation) -> portrait , 'pt' -> points(measurement) , 'a4' -> paper size 
@@ -744,9 +956,27 @@
 
    doc.save('cv.pdf')
   -----------------------------
+|let input = document.queryselector(".photo").files[0];
+ 
 |
 |
-|
+
+
+
+
+
+
+
+}
+
+toggleError(list,field,message =""){
+  
+}
+
+start-up that we do not need to 
+ux formation 
+it rood
+cjdm
 
 
 | */

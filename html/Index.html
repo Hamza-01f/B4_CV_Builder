@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Construisez Votre CV</title>
+  
+
+  <link href="../assets/css/output.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+  
+  <style>
+  
+    .text-glow {
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .border-animation {
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+      border-radius: 50px;
+    }
+
+    .border-animation:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300%;
+      height: 300%;
+      background: linear-gradient(45deg, #ff00cc, #6a5bff, #00d2ff, #ffdd00);
+      animation: animate-border 4s linear infinite;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+
+    @keyframes animate-border {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+  </style>
+</head>
+
+<body class="bg-gray-50 font-sans">
+
+
+  <div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600">
+
+    <div class="bg-white p-8 rounded-lg shadow-2xl max-w-xl w-full text-center">
+
+
+      <h1 class="text-5xl font-extrabold text-gray-800 animate-[fadeIn_2s] text-glow mb-6">
+        Construisez Votre CV Professionnel en Quelques Minutes
+      </h1>
+
+      <p class="text-xl text-gray-700 mb-8 max-w-md mx-auto font-roboto">
+        Créez un CV impeccable qui met en valeur vos compétences, votre expérience et vos réalisations.
+        <br>
+        Laissez-nous vous aider à faire briller votre profil professionnel !
+      </p>
+
+      <div class="border-t-4 border-indigo-600 mx-auto my-8 w-24"></div>
+
+
+      <div>
+        <a href="FillInInfo.html" class="inline-block bg-gradient-to-r from-indigo-600 to-indigo-700 text-white py-3 px-8 rounded-lg text-lg font-semibold border-animation hover:bg-gradient-to-l hover:from-indigo-700 hover:to-indigo-800 transition duration-300 transform hover:scale-105">
+          Commencez Maintenant
+        </a>
+      </div>
+
+      <div class="mt-8 text-sm text-gray-500">
+        <p class="italic">Rejoignez des milliers de professionnels qui créent des CV qui attirent l'attention des recruteurs.</p>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your CV Template</title>
+    <link href="../assets/css/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="h-14 bg-gradient-to-r from-lime-400 to-pink-500" >
+
+    <div class="container mx-auto px-4 py-12" class="bg-[url('../assets/Images/background.jpg')] bg-cover bg-center h-64">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">Choose Your CV Template</h1>
+
+        <div class="flex justify-center space-x-8">
+          
+            <div id="template-1" class="template-card w-1/3 bg-white rounded-lg shadow-lg p-6 cursor-pointer hover:shadow-2xl"   onclick="selectTemplate('template-1')">
+                <h2 class="text-xl font-semibold text-center mb-4">Classic Template</h2>
+                <img src="https://www.cvhero.com/templates/preview/classic-cv.jpg" alt="Classic Template" class="w-full h-64 object-cover rounded-lg mb-4">
+                <p class="text-center text-gray-600">A clean and professional template for a traditional CV layout.</p>
+            </div>
+
+           
+            <div id="template-2" class="template-card w-1/3 bg-white rounded-lg shadow-lg p-6 cursor-pointer hover:shadow-2xl" data-template-id="2" onclick="selectTemplate('template-2')">
+                <h2 class="text-xl font-semibold text-center mb-4">Modern Template</h2>
+                <img src="https://marketplace.canva.com/EAFzSzKZZsg/1/0/1131w/canva-modern-minimalist-cv-resume-oTDK4_esRiU.jpg" alt="Modern Template" class="w-full h-64 object-cover rounded-lg mb-4">
+                <p class="text-center text-gray-600">A modern design with a more creative and flexible layout.</p>
+            </div>
+        </div>
+
+        <div class="mt-8 flex justify-center">
+            <button id="nextBtn" class="bg-blue-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-blue-700 transition" onclick="nextPage()">Next</button>
+        </div>
+    </div>
+
+    <script src="../assets/js/index.js"></script>
+
+</body>
+</html> -->
