@@ -75,7 +75,7 @@
     const SummaryRegix = /^.{20,120}$/;
     const TitlesRegix = /^[a-zA-Z\s]{3,20}$/;  
     const YearRegix = /^([1-2]\d{3})$/;
-    const DurationRegix = /^\d+\s(years?|months?|weeks?|days?)$/;
+    const DurationRegix = /^\d+\s(years?|months?|weeks?|days?|jours?|mois|semaines?|annees?)$/;
     const FullNameRegix  = /^[a-z]{2,20}\s[a-z]{2,20}$/;
     const LanguageLevelRegix = /^[a-zA-Z]{3,20}$/;
 
@@ -385,7 +385,7 @@
 
             }else if(valeur == 4){
                 const hobbiesinputs = document.querySelectorAll('.hobbyclass');
-                addhobby.addhobbies = [];
+                formData.addedHobbies = [];
                 hobbiesinputs.forEach((input) => {
                     if(input.value){
                         formData.addedHobbies.push(input.value);
@@ -409,7 +409,6 @@
                         }
                     });
                 }
-                console.log(formData.addedEducation)
             }else if(valeur == 6){
                 const jobTitleInputs = document.querySelectorAll('.job-title');
                 const companyInputs = document.querySelectorAll('.company');
@@ -631,7 +630,7 @@
                                          // //------------------------------------[Validate Hobbies Form]----------------------------------------
                             
                                          // Hobbies
-                                         if (hobbies.value === '' || !LanguageLevelRegix.test(hobbies.value)) {
+                                         if (hobbies.value === '' || !TitlesRegix.test(hobbies.value)) {
                                              hobbies.value === '' ? hobbiesError.textContent = 'Please enter your Hobby' : hobbiesError.textContent = 'Please Enter a Valid Hobby Name';
                                              hobbiesError.style.color = "red";
                                              valid = false;
@@ -681,7 +680,7 @@
                                          }
                             
                                          // Company
-                                         if (company.value === '' || !TitlesRegix(company.value)) {
+                                         if (company.value === '' || !TitlesRegix.test(company.value)) {
                                              company.value === '' ? companyError.textContent = 'Please enter Company Name' : companyError.textContent = 'Please Enter a Valid Company Name';
                                              companyError.style.color = "red";
                                              valid = false;
